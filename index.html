@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>ISDS Products — AI Factory & NEXUS STUDIO — ارائه</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --lime:#84cc16;--lime2:#65a30d;--deep:#3f6212;
+  --ink:#1c2a10;--txt:#33422a;--mut:#7d8c6f;
+  --card:#ffffff;--brd:#e2eed2;
+  --green:#22c55e;--em:#10b981;--teal:#14b8a6;--amber:#f59e0b;--sky:#0ea5e9;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family:'Vazirmatn',Tahoma,sans-serif;color:var(--txt);overflow:hidden;
+  background:
+    radial-gradient(1100px 680px at 92% -12%,#e9f6d1 0%,transparent 55%),
+    radial-gradient(950px 640px at 3% 112%,#e2f4cf 0%,transparent 55%),
+    linear-gradient(160deg,#fefff9,#f1f8e6);
+}
+
+/* ═════ اسلایدها ═════ */
+.slide{position:fixed;inset:0;display:flex;flex-direction:column;overflow:hidden;
+  opacity:0;visibility:hidden;transition:opacity .45s ease,visibility .45s}
+.slide.active{opacity:1;visibility:visible}
+.slide::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(101,163,13,.05) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(101,163,13,.05) 1px,transparent 1px);
+  background-size:52px 52px;
+  -webkit-mask-image:radial-gradient(75vw 70vh at 72% 15%,#000 30%,transparent 80%);
+          mask-image:radial-gradient(75vw 70vh at 72% 15%,#000 30%,transparent 80%)}
+.slide::after{content:"";position:absolute;width:42vw;height:42vw;max-width:580px;max-height:580px;border-radius:50%;
+  pointer-events:none;filter:blur(10px);top:-16vh;left:-12vw;
+  background:radial-gradient(circle,rgba(163,230,53,.17),transparent 65%);
+  animation:float 9s ease-in-out infinite alternate}
+@keyframes float{to{transform:translate(4vw,3vh)}}
+.slide>*{position:relative;z-index:2}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s cubic-bezier(.2,.7,.3,1),transform .6s cubic-bezier(.2,.7,.3,1)}
+.slide.active .reveal{opacity:1;transform:none}
+.d1{transition-delay:.05s}.d2{transition-delay:.13s}.d3{transition-delay:.21s}
+.d4{transition-delay:.3s}.d5{transition-delay:.38s}.d6{transition-delay:.46s}.d7{transition-delay:.54s}
+
+/* ═════ هدر ═════ */
+.hd{display:flex;justify-content:space-between;align-items:flex-start;gap:2vw;padding:2.6vh 3vw 1vh}
+.badge{display:inline-flex;align-items:center;gap:8px;font-size:clamp(10px,.82vw,13px);font-weight:800;letter-spacing:.4px;
+  color:var(--deep);background:#f2fcdc;border:1px solid #cfe3a6;padding:3px 15px;border-radius:99px;margin-bottom:.9vh}
+.badge i{width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 9px var(--lime)}
+h1{font-size:clamp(22px,min(2.5vw,4.3vh),38px);font-weight:900;color:var(--ink);line-height:1.3}
+h1 .en{background:linear-gradient(90deg,var(--lime2),var(--green));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--mut);font-size:clamp(11.5px,min(1vw,1.85vh),16px);margin-top:.5vh;font-weight:500}
+
+.donut-wrap{display:flex;align-items:center;gap:1.2vw;flex:none;padding-top:.6vh}
+.donut{width:clamp(74px,7.8vw,122px);height:clamp(74px,7.8vw,122px);border-radius:50%;position:relative;flex:none;
+  background:conic-gradient(var(--lime) 0 60deg,var(--green) 0 120deg,var(--em) 0 180deg,var(--teal) 0 240deg,var(--amber) 0 300deg,var(--sky) 0 360deg);
+  box-shadow:0 10px 26px -12px rgba(101,163,13,.45)}
+.donut::after{content:"";position:absolute;inset:18%;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 1px var(--brd)}
+.donut span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:clamp(12px,1.25vw,19px);color:var(--deep);z-index:1}
+.legend{list-style:none;display:grid;grid-template-columns:auto auto;gap:.4vh 1vw}
+.legend li{font-size:clamp(9.5px,.82vw,12.5px);color:#4b5c3d;display:flex;align-items:center;gap:6px;white-space:nowrap;font-weight:600}
+.legend i{width:10px;height:10px;border-radius:3.5px;background:var(--c);flex:none}
+.legend-cap{font-size:clamp(9px,.75vw,11.5px);color:var(--mut);font-weight:400;grid-column:1/-1}
+
+/* ═════ بدنه اسلاید ۱ ═════ */
+.body1{flex:1;display:flex;gap:1.3vw;padding:.7vh 3vw 0;min-height:0}
+
+.journey{width:clamp(222px,20.5vw,318px);flex:none;display:flex;flex-direction:column;background:#f9fdf2;
+  border:1px solid var(--brd);border-radius:18px;padding:1.6vh 1.1vw;box-shadow:0 12px 34px -20px rgba(101,163,13,.35)}
+.j-title{font-size:clamp(12px,min(1.02vw,1.9vh),16.5px);font-weight:800;color:var(--deep);display:flex;align-items:center;gap:7px;margin-bottom:.9vh}
+.j-title svg{width:clamp(15px,1.3vw,20px);height:auto;flex:none}
+.j-steps{position:relative;flex:1}
+.j-steps::before{content:"";position:absolute;right:clamp(11px,.95vw,14.5px);top:.9vh;bottom:.9vh;width:3px;border-radius:3px;
+  background:linear-gradient(180deg,var(--lime),var(--green),var(--amber))}
+.j-step{display:flex;align-items:center;gap:.7vw;padding:.38vh 0;position:relative}
+.j-num{width:clamp(22px,1.9vw,29px);height:clamp(22px,1.9vw,29px);border-radius:50%;flex:none;z-index:1;
+  font-size:clamp(10px,.85vw,13.5px);font-weight:800;display:flex;align-items:center;justify-content:center;color:#fff;
+  background:linear-gradient(135deg,var(--lime),var(--green));box-shadow:0 0 0 3px rgba(132,204,22,.16)}
+.j-step:last-child .j-num{background:linear-gradient(135deg,var(--amber),#ea8c00);box-shadow:0 0 0 3px rgba(245,158,11,.18)}
+.j-step b{font-size:clamp(11.5px,min(1vw,1.85vh),15.5px);font-weight:800;color:var(--ink);display:block;line-height:1.35}
+.j-step small{font-size:clamp(9.5px,.78vw,12.5px);color:var(--mut)}
+.j-note{margin-top:.8vh;font-size:clamp(9.5px,.8vw,12.5px);color:var(--mut);border-top:1px dashed #cfdfa9;padding-top:.8vh;line-height:1.65}
+
+.cards4{flex:1;display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:1.1vh 1vw;min-width:0}
+.cards4>*{min-height:0}
+.cap{background:var(--card);border:1px solid var(--brd);border-radius:18px;padding:1.4vh 1.2vw;
+  display:flex;flex-direction:column;gap:.65vh;position:relative;overflow:hidden;min-width:0;min-height:0;
+  box-shadow:0 12px 34px -22px rgba(101,163,13,.4)}
+.cap::before{content:"";position:absolute;inset-inline-start:0;top:0;bottom:0;width:5px;background:linear-gradient(180deg,var(--a),var(--b))}
+.cap::after{content:attr(data-n);position:absolute;left:1vw;bottom:-1.6vh;font-size:clamp(34px,3.7vw,56px);font-weight:900;color:rgba(101,163,13,.07);line-height:1}
+.cap-h{display:flex;align-items:center;gap:.7vw}
+.ic{width:clamp(33px,2.8vw,44px);height:clamp(33px,2.8vw,44px);border-radius:12px;flex:none;display:flex;align-items:center;justify-content:center;color:#fff;
+  background:linear-gradient(135deg,var(--a),var(--b));box-shadow:0 7px 16px -7px var(--a)}
+.ic svg{width:52%;height:52%}
+.cap h3{font-size:clamp(13px,min(1.2vw,2.15vh),18.5px);font-weight:800;color:var(--ink);line-height:1.35}
+.cap h3 .no{font-size:.6em;color:var(--a);border:1.5px solid;border-radius:7px;padding:0 5px;margin-left:6px;vertical-align:2px}
+.cap ul{list-style:none;display:flex;flex-direction:column;gap:.35vh}
+.cap li{font-size:clamp(10.5px,min(.93vw,1.8vh),14.5px);color:#41503a;line-height:1.62;padding-right:1vw;position:relative}
+.cap li::before{content:"";position:absolute;right:0;top:.6em;width:7px;height:7px;border-radius:2.5px;background:var(--a);transform:rotate(45deg)}
+.cap li b{color:var(--ink)}
+.mini-flow{font-size:clamp(9.5px,.82vw,13px);background:#f2fbdf;border:1px dashed #b9dc84;color:var(--deep);
+  padding:.55vh .85vw;border-radius:10px;line-height:1.7;margin-top:auto;font-weight:600}
+
+/* ═════ اسلاید ۲ ═════ */
+.chain{direction:ltr;display:flex;flex-wrap:wrap;gap:5px;justify-content:flex-end;max-width:36vw;padding-top:.6vh}
+.chain span{font-size:clamp(9px,.78vw,12px);font-weight:700;color:#47611f;background:#f4fbe9;
+  border:1px solid #dcecc0;border-radius:99px;padding:2px 10px;white-space:nowrap}
+.chain em{color:var(--lime2);font-style:normal;font-weight:900;font-size:clamp(10px,.85vw,13px)}
+.g2{flex:1;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 1fr;gap:1.1vh 1vw;padding:.4vh 3vw 0;min-height:0}
+.g2>*{min-width:0;min-height:0}
+
+.hub{width:100%;height:auto;display:block;margin-top:auto;max-height:22vh}
+.hub .lk{stroke:#b7d489;stroke-width:2;stroke-dasharray:4 4}
+.hub .pill rect{fill:#f4fbe9;stroke:#c9e19e;stroke-width:1.5}
+.hub .pill text{fill:var(--deep);font-size:11px;font-weight:800;font-family:'Vazirmatn';text-anchor:middle}
+.hub .ctr{fill:#fff;font-size:11px;font-weight:900;text-anchor:middle;font-family:'Vazirmatn'}
+
+.value{background:linear-gradient(155deg,#f4fce2,#fbfff4);border:1.5px solid #d7ecab;border-radius:18px;
+  padding:1.4vh 1.2vw;display:flex;flex-direction:column;gap:.5vh;box-shadow:0 12px 34px -22px rgba(101,163,13,.45)}
+.value h3{font-size:clamp(13px,min(1.18vw,2.1vh),18px);font-weight:900;color:var(--deep);display:flex;align-items:center;gap:7px}
+.value ul{list-style:none;display:flex;flex-direction:column;gap:.3vh}
+.value li{font-size:clamp(10.5px,min(.93vw,1.8vh),14.5px);color:#41503a;line-height:1.65;padding-right:1.4vw;position:relative;font-weight:500}
+.value li::before{content:"✓";position:absolute;right:0;top:0;color:var(--green);font-weight:900}
+.vfoot{margin-top:auto;font-size:clamp(9.5px,.8vw,12.5px);color:var(--lime2);border-top:1px dashed #cfdfa9;padding-top:.7vh;font-weight:600}
+
+.quote{margin:1.1vh 3vw .9vh;background:linear-gradient(90deg,#f6fde9,#fdfef9);
+  border:1px solid #dcebbe;border-right:6px solid var(--lime);border-radius:16px;
+  padding:1vh 1.7vw;display:flex;align-items:center;gap:1.1vw;
+  box-shadow:0 12px 34px -22px rgba(101,163,13,.4)}
+.quote .qm{font-size:clamp(26px,2.6vw,40px);font-weight:900;color:var(--lime2);line-height:.5;flex:none;font-family:Georgia,serif}
+.quote p{font-size:clamp(11.5px,min(1.08vw,2vh),17px);font-weight:700;color:#2f4514;line-height:1.78}
+
+.ft{display:flex;justify-content:space-between;align-items:center;margin-top:auto;
+  padding:.8vh 3vw;font-size:clamp(9px,.78vw,12px);color:#8b9a7c;border-top:1px solid #e7f0d8}
+.ft .pg{background:#f0f9dd;border:1px solid #d4e9a8;color:var(--deep);padding:1px 13px;border-radius:99px;font-weight:700}
+
+/* ═════ نوار کنترل ═════ */
+.nav{position:fixed;bottom:2.2vh;left:50%;transform:translateX(-50%);z-index:90;
+  display:flex;align-items:center;gap:11px;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);
+  border:1px solid var(--brd);border-radius:99px;padding:6px 12px;user-select:none;
+  box-shadow:0 14px 36px -14px rgba(63,98,18,.4);transition:opacity .4s}
+.nav button{width:clamp(36px,2.8vw,44px);height:clamp(36px,2.8vw,44px);border-radius:50%;border:1px solid var(--brd);
+  background:#fff;color:var(--deep);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s}
+.nav button:hover{background:var(--lime);border-color:var(--lime);color:#fff}
+.nav svg{width:46%;height:46%}
+.dots{display:flex;gap:7px;align-items:center;padding:0 3px}
+.dot{width:9px;height:9px;border-radius:99px;background:#d5e7b5;border:none;cursor:pointer;transition:.25s;padding:0}
+.dot.on{width:26px;background:var(--lime)}
+
+.progress{position:fixed;top:0;left:0;right:0;height:4px;background:rgba(101,163,13,.12);z-index:95}
+.progress i{display:block;height:100%;width:25%;background:linear-gradient(90deg,var(--lime),var(--green));transition:width .4s}
+
+.toast{position:fixed;bottom:11vh;left:50%;transform:translateX(-50%) translateY(12px);z-index:99;max-width:88vw;text-align:center;
+  background:var(--deep);color:#fff;padding:9px 22px;border-radius:99px;font-size:12.5px;font-weight:700;
+  opacity:0;pointer-events:none;transition:.35s;box-shadow:0 12px 30px -10px rgba(63,98,18,.5)}
+.toast.on{opacity:.96;transform:translateX(-50%)}
+
+/* حالت ارائه */
+body.fs{cursor:none}
+body.fs .nav,body.fs .progress{opacity:0;pointer-events:none}
+
+/* ═════ حالت موبایل — المان‌ها زیر هم + اسکرول ═════ */
+@media (max-width:880px){
+  .slide{overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;display:block;padding-bottom:14vh}
+  .slide::after{width:70vw;height:70vw}
+  .hd{flex-direction:column;align-items:stretch;gap:2vh;padding:2.4vh 5vw .5vh}
+  .donut-wrap{justify-content:center;gap:4vw;padding-top:0}
+  .donut{width:19vw;height:19vw;min-width:76px;min-height:76px}
+  .legend{display:flex;flex-wrap:wrap;gap:1.2vh 3.4vw;justify-content:center}
+  .legend-cap{width:100%;text-align:center}
+  h1{font-size:clamp(20px,6vw,26px)}
+  .sub{font-size:clamp(12px,3.4vw,14px)}
+  .badge{font-size:clamp(10px,2.9vw,12px)}
+  .chain{max-width:100%;justify-content:center}
+
+  .body1{flex-direction:column;gap:2vh;padding:1vh 5vw 0}
+  .journey{width:100%}
+  .cards4{grid-template-columns:1fr;gap:1.6vh}
+
+  .g2{display:flex;flex-direction:column;gap:1.6vh;padding:.6vh 5vw 0}
+  .hub{max-height:none}
+
+  .quote{margin:1.6vh 5vw 1vh;flex-direction:column;align-items:flex-start;gap:.8vh;padding:1.6vh 4.5vw}
+  .quote .qm{line-height:.9}
+  .ft{padding:1.2vh 5vw;font-size:clamp(10px,2.9vw,12px);margin-top:2vh}
+  .ft .pg{white-space:nowrap}
+
+  .cap{padding:2vh 4vw;border-radius:16px}
+  .cap li{padding-right:5.5vw;font-size:clamp(12.5px,3.5vw,14.5px);line-height:1.7}
+  .cap h3{font-size:clamp(15px,4.3vw,19px)}
+  .ic{width:11vw;height:11vw;min-width:40px;min-height:40px}
+  .j-step b{font-size:clamp(13px,3.7vw,15px)}
+  .j-step small{font-size:clamp(11px,3.1vw,13px)}
+  .value li{font-size:clamp(12.5px,3.5vw,14.5px)}
+  .quote p{font-size:clamp(13px,3.7vw,15.5px)}
+  .mini-flow{font-size:clamp(11px,3.1vw,13px)}
+
+  .nav{bottom:1.6vh;padding:5px 10px;gap:8px}
+  .nav button{width:40px;height:40px}
+}
+
+/* ═════ چاپ ═════ */
+@media print{
+  body{overflow:visible}
+  .nav,.progress,.toast{display:none!important}
+  .slide{position:relative;inset:auto;width:100%;height:100vh;opacity:1!important;visibility:visible!important;
+    page-break-after:always;break-after:page}
+  .reveal{opacity:1!important;transform:none!important;transition:none!important}
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  @page{size:landscape;margin:0}
+}
+</style>
+</head>
+<body>
+
+<div class="progress"><i id="bar"></i></div>
+
+<!-- ═══════════════════════════════════════════
+     محصول اول: ISDS AI FACTORY — اسلاید ۱
+     ═══════════════════════════════════════════ -->
+<section class="slide active" id="aif1">
+  <header class="hd">
+    <div class="reveal d1">
+      <div class="badge"><i></i> محصول اول &nbsp;|&nbsp; ISDS AI FACTORY (AIF)</div>
+      <h1>معرفی و قابلیت‌های <span class="en">ISDS AI Factory</span></h1>
+      <div class="sub">زیرساخت یکپارچه هوش مصنوعی سازمانی — کل زنجیره در یک محیط واحد، به‌جای ابزارهای پراکنده</div>
+    </div>
+    <div class="donut-wrap reveal d2">
+      <div class="donut"><span>AIF</span></div>
+      <ul class="legend">
+        <li><i style="--c:var(--lime)"></i>پردازش متن</li>
+        <li><i style="--c:var(--green)"></i>گفتار</li>
+        <li><i style="--c:var(--em)"></i>بینایی ماشین</li>
+        <li><i style="--c:var(--teal)"></i>کلان‌داده</li>
+        <li><i style="--c:var(--amber)"></i>یادگیری ماشین</li>
+        <li><i style="--c:var(--sky)"></i>بازیابی دانش</li>
+        <li class="legend-cap">حوزه‌های تخصصی پوشش‌داده‌شده توسط سکو</li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="body1">
+    <aside class="journey reveal d3">
+      <div class="j-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="4"/></svg>
+        نمودار زنجیره ارزش AI
+      </div>
+      <div class="j-steps">
+        <div class="j-step"><span class="j-num">۱</span><div><b>زیرساخت و GPU</b><small>منابع پردازشی مقیاس‌پذیر</small></div></div>
+        <div class="j-step"><span class="j-num">۲</span><div><b>داده و اسناد سازمان</b><small>Ceph / HDFS</small></div></div>
+        <div class="j-step"><span class="j-num">۳</span><div><b>مدل‌های هوش مصنوعی</b><small>LLM، گفتار، تصویر</small></div></div>
+        <div class="j-step"><span class="j-num">۴</span><div><b>محیط توسعه</b><small>VSCode، Notebook</small></div></div>
+        <div class="j-step"><span class="j-num">۵</span><div><b>RAG و Agent</b><small>دانش سازمانی</small></div></div>
+        <div class="j-step"><span class="j-num">۶</span><div><b>Workflow</b><small>محیط بصری Studio</small></div></div>
+        <div class="j-step"><span class="j-num">۷</span><div><b>یکپارچه‌سازی</b><small>API / SDK / HTTP</small></div></div>
+        <div class="j-step"><span class="j-num">۸</span><div><b>اپلیکیشن سازمانی</b><small>انتشار نهایی سرویس</small></div></div>
+      </div>
+      <div class="j-note">هر قابلیت به‌تنهایی قابل استفاده است یا کل زنجیره، متناسب با نیاز سازمان.</div>
+    </aside>
+
+    <div class="cards4">
+      <article class="cap reveal d4" data-n="۰۱" style="--a:var(--lime);--b:#4d7c0f">
+        <div class="cap-h">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span>
+          <h3><span class="no">۰۱</span>مدیریت متمرکز داده و اسناد</h3>
+        </div>
+        <ul>
+          <li>بارگذاری، دسته‌بندی و اشتراک <b>فایل، مستندات و Dataset</b></li>
+          <li>ذخیره‌سازی مقیاس‌پذیر با <b>Ceph</b> و <b>HDFS</b> برای کلان‌داده</li>
+          <li>دسترسی مشترک داده در تمام اجزای سکو — بدون جابه‌جایی مکرر</li>
+        </ul>
+      </article>
+
+      <article class="cap reveal d5" data-n="۰۲" style="--a:var(--green);--b:#15803d">
+        <div class="cap-h">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="10" y="10" width="4" height="4"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg></span>
+          <h3><span class="no">۰۲</span>مدل‌های متنوع هوش مصنوعی</h3>
+        </div>
+        <ul>
+          <li><b>LLM</b>، پردازش متن، گفتار، تصویر، ترجمه و <b>Embedding</b></li>
+          <li>فراخوانی آسان مدل‌ها از طریق <b>API</b> و <b>SDK</b></li>
+          <li>خلاصه‌سازی، OCR، ترجمه، تحلیل تصویر، طبقه‌بندی و...</li>
+        </ul>
+      </article>
+
+      <article class="cap reveal d6" data-n="۰۳" style="--a:var(--em);--b:#047857">
+        <div class="cap-h">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg></span>
+          <h3><span class="no">۰۳</span>دستیارهای هوشمند و RAG</h3>
+        </div>
+        <ul>
+          <li>پایگاه دانش از آیین‌نامه‌ها، قراردادها، گزارش‌ها و بخشنامه‌ها</li>
+          <li>پاسخ مبتنی بر دانش واقعی سازمان — نه یک چت‌بات عمومی</li>
+          <li>دستیار <b>مدیران، منابع انسانی، حقوقی، مالی و پشتیبانی</b></li>
+        </ul>
+      </article>
+
+      <article class="cap reveal d7" data-n="۰۴" style="--a:var(--amber);--b:#d97706">
+        <div class="cap-h">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="5" cy="5" r="2.2"/><circle cx="19" cy="5" r="2.2"/><circle cx="12" cy="19" r="2.2"/><path d="M6.7 6.9l4 9.5M17.3 6.9l-4 9.5M7.2 5h9.6"/></svg></span>
+          <h3><span class="no">۰۴</span>بخش Agent و Workflow بصری</h3>
+        </div>
+        <ul>
+          <li>محیط <b>Studio</b> با Drag &amp; Drop — بدون توسعه سنگین</li>
+          <li>ترکیب مدل زبانی، RAG، API، منطق شرطی و اجرای کد</li>
+        </ul>
+        <div class="mini-flow">نمونه: دریافت سند ← استخراج متن ← تحلیل مدل ← خلاصه‌سازی ← ثبت در سامانه</div>
+      </article>
+    </div>
+  </div>
+
+  <footer class="ft">
+    <span>ISDS AI Factory — زیرساخت یکپارچه هوش مصنوعی سازمانی</span>
+    <span class="pg">اسلاید ۱ از ۴ • AIF — معرفی و قابلیت‌های اصلی</span>
+  </footer>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     محصول اول: ISDS AI FACTORY — اسلاید ۲
+     ═══════════════════════════════════════════ -->
+<section class="slide" id="aif2">
+  <header class="hd">
+    <div class="reveal d1">
+      <div class="badge"><i></i> ISDS AI FACTORY • بخش دوم</div>
+      <h1>توسعه، استقرار و <span class="en">ارزش سازمانی</span></h1>
+      <div class="sub">از محیط توسعه حرفه‌ای تا امنیت، مقیاس‌پذیری و ارزش تجاری</div>
+    </div>
+    <div class="chain reveal d2">
+      <span>GPU</span><em>→</em><span>Data</span><em>→</em><span>Models</span><em>→</em><span>Dev</span><em>→</em><span>RAG</span><em>→</em><span>Workflow</span><em>→</em><span>Apps</span>
+    </div>
+  </header>
+
+  <div class="g2">
+    <article class="cap reveal d3" data-n="۰۵" style="--a:var(--lime);--b:#4d7c0f">
+      <div class="cap-h">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></span>
+        <h3><span class="no">۰۵</span>محیط توسعه حرفه‌ای</h3>
+      </div>
+      <ul>
+        <li><b>VSCode / CodeServer</b>، Terminal و Notebookها</li>
+        <li>تخصیص اختصاصی <b>CPU، RAM، GPU و Disk</b> به هر کاربر</li>
+        <li>Low-Code برای کاربران غیرفنی + کدنویسی کامل برای متخصصان</li>
+      </ul>
+    </article>
+
+    <article class="cap reveal d4" data-n="۰۶" style="--a:var(--green);--b:#15803d">
+      <div class="cap-h">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span>
+        <h3><span class="no">۰۶</span>پردازش متن، صوت، تصویر و داده</h3>
+      </div>
+      <ul>
+        <li><b style="color:var(--lime2)">متن:</b> خلاصه‌سازی، ترجمه، طبقه‌بندی، استخراج اطلاعات</li>
+        <li><b style="color:var(--em)">گفتار:</b> Speech-to-Text و Text-to-Speech</li>
+        <li><b style="color:var(--amber)">بینایی:</b> OCR، تشخیص اشیا، Image Segmentation</li>
+        <li><b style="color:var(--teal)">داده:</b> Classification، Clustering، Regression، Spark</li>
+      </ul>
+    </article>
+
+    <article class="cap reveal d5" data-n="۰۷" style="--a:var(--em);--b:#047857">
+      <div class="cap-h">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></span>
+        <h3><span class="no">۰۷</span>اتصال و انتشار</h3>
+      </div>
+      <ul>
+        <li>یکپارچه‌سازی با سامانه‌ها و منابع داده سازمان</li>
+        <li>انتقال نتیجه به سامانه مقصد در چارچوب مجوزها</li>
+      </ul>
+      <svg class="hub" viewBox="0 0 230 108">
+        <defs><linearGradient id="gvA" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#84cc16"/><stop offset="1" stop-color="#22c55e"/></linearGradient></defs>
+        <line class="lk" x1="62" y1="26" x2="103" y2="46"/><line class="lk" x1="62" y1="82" x2="103" y2="62"/>
+        <line class="lk" x1="168" y1="26" x2="127" y2="46"/><line class="lk" x1="168" y1="82" x2="127" y2="62"/>
+        <circle cx="115" cy="54" r="24" fill="url(#gvA)"/><text class="ctr" x="115" y="58">AIF</text>
+        <g class="pill"><rect x="12" y="15" width="50" height="22" rx="11"/><text x="37" y="30">API</text></g>
+        <g class="pill"><rect x="12" y="71" width="50" height="22" rx="11"/><text x="37" y="86">SDK</text></g>
+        <g class="pill"><rect x="168" y="15" width="56" height="22" rx="11"/><text x="196" y="30">HTTP</text></g>
+        <g class="pill"><rect x="152" y="71" width="72" height="22" rx="11"/><text x="188" y="86">Web Chat</text></g>
+      </svg>
+    </article>
+
+    <article class="cap reveal d6" data-n="۰۸" style="--a:var(--amber);--b:#d97706">
+      <div class="cap-h">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span>
+        <h3><span class="no">۰۸</span>استقرار On-Premise و امنیت</h3>
+      </div>
+      <ul>
+        <li>باقی ماندن داده‌ها در زیرساخت <b>کنترل‌شده سازمان</b></li>
+        <li>مدیریت هویت و دسترسی + ثبت کامل وقایع</li>
+        <li>رمزنگاری ارتباطات و ایزوله‌سازی محیط‌های پردازشی</li>
+      </ul>
+    </article>
+
+    <article class="cap reveal d7" data-n="۰۹" style="--a:var(--teal);--b:#0f766e">
+      <div class="cap-h">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.4"/><path d="M12 3v5.6M12 15.4V21M3 12h5.6M15.4 12H21M5.7 5.7l4 4M14.3 14.3l4 4M18.3 5.7l-4 4M9.7 14.3l-4 4"/></svg></span>
+        <h3><span class="no">۰۹</span>مقیاس‌پذیری با Kubernetes</h3>
+      </div>
+      <ul>
+        <li>مدیریت پویای <b>CPU و GPU</b> متناسب با نیاز سرویس‌ها</li>
+        <li>توزیع بار و توسعه تدریجی ظرفیت زیرساخت</li>
+        <li>اجرای هم‌زمان چند تیم و پروژه AI</li>
+      </ul>
+    </article>
+
+    <aside class="value reveal d7">
+      <h3>✦ ارزش پیشنهادی برای سازمان</h3>
+      <ul>
+        <li>کاهش پراکندگی ابزارها و زیرساخت‌های موازی</li>
+        <li>تسریع توسعه راهکارهای هوش مصنوعی</li>
+        <li>استفاده مجدد از مدل‌ها و سرویس‌ها</li>
+        <li>حاکمیت و کنترل کامل بر داده سازمانی</li>
+        <li>کاهش وابستگی به سرویس‌های خارجی</li>
+      </ul>
+      <div class="vfoot">زنجیره کامل: از زیرساخت و داده تا اپلیکیشن‌های سازمانی</div>
+    </aside>
+  </div>
+
+  <div class="quote reveal d7">
+    <span class="qm">”</span>
+    <p><b>ISDS AI Factory</b> زیرساخت یکپارچه پیاده‌سازی هوش مصنوعی در سازمان است؛ از داده، زیرساخت پردازشی و مدل تا ساخت، استقرار و اتصال دستیارها، Agentها، RAG و سرویس‌های هوشمند به فرایندهای واقعی سازمان.</p>
+  </div>
+
+  <footer class="ft">
+    <span>منابع: راهنمای مدیریتی سکو • ISDS AI Factory Tools</span>
+    <span class="pg">اسلاید ۲ از ۴ • AIF — توسعه، استقرار و ارزش سازمانی</span>
+  </footer>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     محصول دوم: NEXUS STUDIO — اسلاید ۳
+     ═══════════════════════════════════════════ -->
+<section class="slide" id="nx1">
+  <header class="hd">
+    <div class="reveal d1">
+      <div class="badge"><i></i> محصول دوم &nbsp;|&nbsp; NEXUS STUDIO — AGENTIC AI PLATFORM</div>
+      <h1>معرفی و قابلیت‌های <span class="en">NEXUS STUDIO</span></h1>
+      <div class="sub">فراتر از یک دستیار — بستری برای اجرای واقعی فرایندهای پیچیده دانش‌بنیادی و سازمانی با هوش مصنوعی عاملیت‌محور</div>
+    </div>
+    <div class="donut-wrap reveal d2">
+      <div class="donut"><span>Studio</span></div>
+      <ul class="legend">
+        <li><i style="--c:var(--lime)"></i>Agentic Harness</li>
+        <li><i style="--c:var(--green)"></i>Context Engineering</li>
+        <li><i style="--c:var(--em)"></i>Dynamic Planning</li>
+        <li><i style="--c:var(--teal)"></i>Governed AI</li>
+        <li><i style="--c:var(--amber)"></i>MCP و ابزارها</li>
+        <li><i style="--c:var(--sky)"></i>تحلیل داده و کد</li>
+        <li class="legend-cap">موتورهای تخصصی اجرای فرایندهای هوشمند</li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="body1">
+    <aside class="journey reveal d3">
+      <div class="j-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="4"/></svg>
+        از «پرسش» تا «انجام کار»
+      </div>
+      <div class="j-steps">
+        <div class="j-step"><span class="j-num">۱</span><div><b>هدف کسب‌وکار</b><small>«این داده‌ها را تحلیل کن»</small></div></div>
+        <div class="j-step"><span class="j-num">۲</span><div><b>درک و برنامه‌ریزی</b><small>Dynamic Planning</small></div></div>
+        <div class="j-step"><span class="j-num">۳</span><div><b>دسترسی کنترل‌شده</b><small>Governed AI</small></div></div>
+        <div class="j-step"><span class="j-num">۴</span><div><b>ابزار و داده سازمان</b><small>MCP Servers &amp; Tools</small></div></div>
+        <div class="j-step"><span class="j-num">۵</span><div><b>اجرای کد ایزوله</b><small>Sandbox امن</small></div></div>
+        <div class="j-step"><span class="j-num">۶</span><div><b>خودارزیابی و اصلاح</b><small>Self-Evaluation</small></div></div>
+        <div class="j-step"><span class="j-num">۷</span><div><b>مدیریت حافظه</b><small>Context Engineering</small></div></div>
+        <div class="j-step"><span class="j-num">۸</span><div><b>نتیجه نهایی</b><small>نه پاسخ — انجام کار</small></div></div>
+      </div>
+      <div class="j-note">عاملیت هوشمند خودش مستندات را می‌خواند، برنامه می‌ریزد، اجرا می‌کند و در صورت خطا مسیر را اصلاح می‌کند.</div>
+    </aside>
+
+    <div class="cards4">
+      <article class="cap reveal d4" data-n="۰۱" style="--a:var(--lime);--b:#4d7c0f">
+        <div class="cap-h">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+          <h3><span class="no">۰۱</span>از «پرسش و پاسخ» تا «انجام کار»</h3>
+        </div>
+        <ul>
+          <li>صرفاً یک چت‌بات نیست؛ <b>موتور هوش مصنوعی عاملیت‌محور</b> است</li>
+          <li>هدف را می‌گیرد، مستندات و ابزارها را انتخاب و اجرا می‌کند</li>
+          <li>خروجی: <b>نتیجه نهایی کار</b>، نه صرفاً پاسخ متنی</li>
+        </ul>
+        <div class="mini-flow">نمونه: «رسیدها را تحلیل کن» ← خواندن فایل ← شناخت جدول‌ها ← دسته‌بندی ← تحلیل ← گزارش نهایی</div>
+      </article>
+
+      <article class="cap reveal d5" data-n="۰۲" style="--a:var(--green);--b:#15803d">
+        <div class="cap-h">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="10" y="10" width="4" height="4"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg></span>
+          <h3><span class="no">۰۲</span>بخش Agentic Harness و موتور اجرای Agent</h3>
+        </div>
+        <ul>
+          <li>مدیریت <b>چرخه کامل اجرا</b>: از راه‌اندازی تا تولید پاسخ نهایی</li>
+          <li>اجرای کد، استفاده از ابزارها و تولید پاسخ نهایی را می‌سازد</li>
+          <li>تمرکز مهندسان بر <b>منطق کار</b>، نه مکانیک‌های Prompt</li>
+        </ul>
+      </article>
+
+      <article class="cap reveal d6" data-n="۰۳" style="--a:var(--em);--b:#047857">
+        <div class="cap-h">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg></span>
+          <h3><span class="no">۰۳</span>بخش Context Engineering و حافظه هوشمند</h3>
+        </div>
+        <ul>
+          <li>خلاصه‌سازی و <b>بهینه‌سازی خودکار اطلاعات</b> تا سقف پنجره Context</li>
+          <li>حفظ اطلاعات مهم، فشرده‌سازی و انتقال نتایج مراحل قبلی</li>
+          <li>جلوگیری از <b>سرریز Token</b> در فرایندهای طولانی</li>
+        </ul>
+      </article>
+
+      <article class="cap reveal d7" data-n="۰۴" style="--a:var(--amber);--b:#d97706">
+        <div class="cap-h">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg></span>
+          <h3><span class="no">۰۴</span>برنامه‌ریزی پویا یا Dynamic Planning</h3>
+        </div>
+        <ul>
+          <li>فرایندهای واقعی همیشه <b>خطی و قابل پیش‌بینی نیستند</b></li>
+          <li>بازنگری و <b>اصلاح برنامه در هر مرحله</b> بر اساس نتایج</li>
+          <li>انتخاب مسیرهای جدید یا اصلاح مسیر قبلی — نزدیک به سیستم‌های خودترتیب</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+
+  <footer class="ft">
+    <span>NEXUS STUDIO — پلتفرم عاملیت‌محور اجرای فرایندهای هوشمند سازمانی</span>
+    <span class="pg">اسلاید ۳ از ۴ • NEXUS — معرفی و موتورهای اصلی</span>
+  </footer>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     محصول دوم: NEXUS STUDIO — اسلاید ۴
+     ═══════════════════════════════════════════ -->
+<section class="slide" id="nx2">
+  <header class="hd">
+    <div class="reveal d1">
+      <div class="badge"><i></i> NEXUS STUDIO • بخش دوم</div>
+      <h1>اتصال، حاکمیت و <span class="en">ارزش سازمانی</span></h1>
+      <div class="sub">اتصال هوش مصنوعی به ابزارها و سامانه‌های واقعی — امن، حاکمیت‌شده و توسعه‌پذیر</div>
+    </div>
+    <div class="chain reveal d2">
+      <span>Goal</span><em>→</em><span>Plan</span><em>→</em><span>Tools</span><em>→</em><span>Code</span><em>→</em><span>Evaluate</span><em>→</em><span>Result</span>
+    </div>
+  </header>
+
+  <div class="g2">
+    <article class="cap reveal d3" data-n="۰۵" style="--a:var(--teal);--b:#0f766e">
+      <div class="cap-h">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span>
+        <h3><span class="no">۰۵</span>بخش Governed AI Assistant</h3>
+      </div>
+      <ul>
+        <li>دسترسی <b>محدود و کنترل‌شده</b> به اطلاعات و ابزارها</li>
+        <li>تعریف <b>سیاست‌های محیطی</b>، محدودیت دسترسی و کنترل ابزارها</li>
+        <li>حاکمیت داده‌ای، Audit و Approval در معماری ISDS</li>
+      </ul>
+    </article>
+
+    <article class="cap reveal d4" data-n="۰۶" style="--a:var(--lime);--b:#4d7c0f">
+      <div class="cap-h">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></span>
+        <h3><span class="no">۰۶</span>بخش MCP Servers &amp; Tools</h3>
+      </div>
+      <ul>
+        <li>اتصال Agent به ابزارها و داده‌ها با <b>Model Context Protocol</b></li>
+        <li>ابزارهای آماده متعدد + <b>ابزارهای اختصاصی</b> برای هر سازمان</li>
+        <li>Agentها از یک سیستم صرف به <b>یک سیستم عاملیتی کامل</b> متصل می‌شوند</li>
+      </ul>
+      <svg class="hub" viewBox="0 0 230 108">
+        <defs><linearGradient id="gvN" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#84cc16"/><stop offset="1" stop-color="#22c55e"/></linearGradient></defs>
+        <line class="lk" x1="62" y1="26" x2="103" y2="46"/><line class="lk" x1="62" y1="82" x2="103" y2="62"/>
+        <line class="lk" x1="162" y1="26" x2="127" y2="46"/><line class="lk" x1="155" y1="82" x2="127" y2="62"/>
+        <circle cx="115" cy="54" r="24" fill="url(#gvN)"/><text class="ctr" x="115" y="58">Agent</text>
+        <g class="pill"><rect x="12" y="15" width="50" height="22" rx="11"/><text x="37" y="30">MCP</text></g>
+        <g class="pill"><rect x="12" y="71" width="50" height="22" rx="11"/><text x="37" y="86">Data</text></g>
+        <g class="pill"><rect x="162" y="15" width="58" height="22" rx="11"/><text x="191" y="30">Tools</text></g>
+        <g class="pill"><rect x="148" y="71" width="72" height="22" rx="11"/><text x="184" y="86">Workflow</text></g>
+      </svg>
+    </article>
+
+    <article class="cap reveal d5" data-n="۰۷" style="--a:var(--sky);--b:#0369a1">
+      <div class="cap-h">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 3 5-6"/></svg></span>
+        <h3><span class="no">۰۷</span>تحلیل پیشرفته داده</h3>
+      </div>
+      <ul>
+        <li>دریافت خودکار داده از <b>منابع داده سازمان</b></li>
+        <li>بررسی، دسته‌بندی و ارائه <b>تحلیل اصلی</b> داده‌ها</li>
+        <li>توانایی <b>تشخیص مشکل اصلی</b> داده‌ها در یک گزارش</li>
+      </ul>
+    </article>
+
+    <article class="cap reveal d6" data-n="۰۸" style="--a:var(--amber);--b:#d97706">
+      <div class="cap-h">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></span>
+        <h3><span class="no">۰۸</span>اجرای ایزوله و امن کد</h3>
+      </div>
+      <ul>
+        <li>اجرای کد در <b>حیطه ایزوله محصور</b> و کنترل‌شده تا اتمام کار</li>
+        <li>کاهش سطح دسترسی پس از <b>ریسک عملیات</b></li>
+        <li>Agentهایی که فقط حرف نمی‌زنند — <b>اقدام واقعی</b> انجام می‌دهند</li>
+      </ul>
+    </article>
+
+    <article class="cap reveal d7" data-n="۰۹" style="--a:var(--green);--b:#15803d">
+      <div class="cap-h">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M9 12l2 2 4-4"/></svg></span>
+        <h3><span class="no">۰۹</span>بخش Self-Evaluation &amp; Recovery</h3>
+      </div>
+      <ul>
+        <li>ارزیابی نتیجه، <b>تلاش مجدد</b> و اصلاح مسیر در صورت خطا</li>
+        <li>فرایند در <b>اولین خطا نمی‌شکند</b> — تا رسیدن به نتیجه نهایی</li>
+        <li>خودتصحیحی عملکرد در حین اجرا</li>
+      </ul>
+    </article>
+
+    <aside class="value reveal d7">
+      <h3>✦ توسعه‌پذیری و کاربردهای سازمانی</h3>
+      <ul>
+        <li>Agentهای جدید، سرویس‌ها و Workflowهای جدید بدون محدودیت</li>
+        <li>ادغام محصولات هوشمند و توسعه فرایندهای موجود</li>
+        <li>کاربرد در پذیرش بیمه، اسناد مالی، اتوماسیون و گزارش‌دهی</li>
+        <li>دستیار واحد فروش، طبقه‌بندی اطلاعات و واحدهای تخصصی</li>
+        <li>تعامل با سامانه‌های داخلی و هماهنگی واحدهای مختلف</li>
+      </ul>
+      <div class="vfoot">داده + ابزار سازمانی + اطلاعات واقعی + Workflow + Agent = اجرای کامل فرایند</div>
+    </aside>
+  </div>
+
+  <div class="quote reveal d7">
+    <span class="qm">”</span>
+    <p><b>NEXUS STUDIO</b> لایه‌ی جامانده میان «پرسش» و «انجام کار» را پر می‌کند: این کاربردها صرفاً یک چت نیستند؛ ترکیبی از <b>داده، ابزار سازمانی، اطلاعات واقعی، Workflow و Agent</b> برای اجرای یک فرایند کامل‌اند.</p>
+  </div>
+
+  <footer class="ft">
+    <span>منابع: معرفی NEXUS STUDIO • مستندات قابلیت‌ها و کاربردها</span>
+    <span class="pg">اسلاید ۴ از ۴ • NEXUS — اتصال، حاکمیت و ارزش سازمانی</span>
+  </footer>
+</section>
+
+<!-- ═══════════ کنترل ═══════════ -->
+<nav class="nav" id="nav">
+  <button id="prev" title="اسلاید قبلی" aria-label="قبلی"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></button>
+  <div class="dots" id="dots"></div>
+  <button id="next" title="اسلاید بعدی" aria-label="بعدی"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+  <button id="fsBtn" title="تمام‌صفحه (کلید F)" aria-label="تمام‌صفحه">
+    <svg id="icExpand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+    <svg id="icShrink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" style="display:none"><path d="M8 3v3a2 2 0 0 1-2 2H3M21 8h-3a2 2 0 0 1-2-2V3M3 16h3a2 2 0 0 1 2 2v3M16 21v-3a2 2 0 0 1 2-2h3"/></svg>
+  </button>
+</nav>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const slides=[...document.querySelectorAll('.slide')],
+      dotsWrap=document.getElementById('dots'),
+      bar=document.getElementById('bar'),
+      nav=document.getElementById('nav'),
+      toast=document.getElementById('toast'),
+      icExpand=document.getElementById('icExpand'),
+      icShrink=document.getElementById('icShrink');
+let cur=0;
+
+slides.forEach((_,i)=>{const b=document.createElement('button');b.className='dot';b.onclick=()=>go(i);dotsWrap.appendChild(b);});
+const dots=[...dotsWrap.children];
+
+function go(i){
+  cur=Math.max(0,Math.min(slides.length-1,i));
+  slides.forEach((s,x)=>s.classList.toggle('active',x===cur));
+  dots.forEach((d,x)=>d.classList.toggle('on',x===cur));
+  bar.style.width=((cur+1)/slides.length*100)+'%';
+  try{history.replaceState(null,'','#'+(cur+1));}catch(e){}
+}
+
+/* ───── تمام‌صفحه ───── */
+function isFS(){return !!(document.fullscreenElement||document.webkitFullscreenElement||document.mozFullScreenElement||document.msFullscreenElement);}
+function syncIcon(){
+  const on=isFS()||document.body.classList.contains('fs');
+  icExpand.style.display=on?'none':'block';
+  icShrink.style.display=on?'block':'none';
+}
+function showToast(msg){toast.textContent=msg;toast.classList.add('on');clearTimeout(toast._t);toast._t=setTimeout(()=>toast.classList.remove('on'),3000);}
+
+function enterFS(){
+  const el=document.documentElement;
+  const fn=el.requestFullscreen||el.webkitRequestFullscreen||el.mozRequestFullScreen||el.msRequestFullscreen;
+  let real=false;
+  if(fn){
+    try{
+      const p=fn.call(el,{navigationUI:'hide'});
+      if(p&&p.then){p.then(()=>real=true).catch(()=>fallback());real=true;}
+      else real=true;
+    }catch(e){}
+  }
+  if(!real)fallback();
+  function fallback(){
+    document.body.classList.add('fs');
+    showToast('حالت ارائه فعال شد — برای خروج ESC یا دکمه را بزنید');
+    syncIcon();
+  }
+}
+function exitFS(){
+  document.body.classList.remove('fs');
+  if(isFS()){
+    const fn=document.exitFullscreen||document.webkitExitFullscreen||document.mozCancelFullScreen||document.msExitFullscreen;
+    try{fn&&fn.call(document);}catch(e){}
+  }
+  syncIcon();
+}
+function toggleFS(){(isFS()||document.body.classList.contains('fs'))?exitFS():enterFS();}
+
+['fullscreenchange','webkitfullscreenchange','mozfullscreenchange','msfullscreenchange']
+ .forEach(ev=>document.addEventListener(ev,syncIcon));
+
+document.getElementById('fsBtn').onclick=toggleFS;
+document.getElementById('next').onclick=()=>go(cur+1);
+document.getElementById('prev').onclick=()=>go(cur-1);
+slides.forEach(s=>s.addEventListener('dblclick',e=>{
+  if(e.target.closest('.nav'))return;
+  toggleFS();
+}));
+
+/* ───── کیبورد و لمس ───── */
+addEventListener('keydown',e=>{
+  if(e.key==='Escape'&&document.body.classList.contains('fs')){exitFS();return;}
+  if(['ArrowLeft','PageDown','Enter'].includes(e.key)||e.code==='Space'){
+    e.preventDefault();
+    const act=slides[cur];
+    if(act.scrollHeight-act.clientHeight-act.scrollTop>40&&!window.matchMedia('(min-width:881px)').matches){act.scrollBy({top:act.clientHeight*.8,behavior:'smooth'});return;}
+    go(cur+1);
+  }
+  else if(['ArrowRight','PageUp','Backspace'].includes(e.key)){e.preventDefault();go(cur-1);}
+  else if(e.key==='Home')go(0);
+  else if(e.key==='End')go(slides.length-1);
+  else if(e.key.toLowerCase()==='f')toggleFS();
+});
+let tx=0,ty=0;
+addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY;},{passive:true});
+addEventListener('touchend',e=>{
+  const dx=e.changedTouches[0].clientX-tx, dy=e.changedTouches[0].clientY-ty;
+  if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5){dx<0?go(cur+1):go(cur-1);}
+},{passive:true});
+
+go((parseInt(location.hash.slice(1))||1)-1);
+</script>
+</body>
+</html>
