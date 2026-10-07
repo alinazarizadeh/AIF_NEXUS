@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>ISDS Products — AI Factory • NEXUS STUDIO • InsightAI — ارائه</title>
+<title>ISDS Products — AI Factory • NEXUS STUDIO • InsightAI • Exploration WebGIS • Live Demo — ارائه</title>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -13,6 +13,7 @@
   --green:#22c55e;--em:#10b981;--teal:#14b8a6;--amber:#f59e0b;--sky:#0ea5e9;
 }
 *{margin:0;padding:0;box-sizing:border-box}
+[hidden]{display:none!important}
 html,body{height:100%}
 body{
   font-family:'Vazirmatn',Tahoma,sans-serif;color:var(--txt);overflow:hidden;
@@ -102,6 +103,14 @@ h1 .en{background:linear-gradient(90deg,var(--lime2),var(--green));-webkit-backg
 .cap li b{color:var(--ink)}
 .mini-flow{font-size:clamp(9.5px,.82vw,13px);background:#f2fbdf;border:1px dashed #b9dc84;color:var(--deep);
   padding:.55vh .85vw;border-radius:10px;line-height:1.7;margin-top:auto;font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto;padding-top:.2vh}
+.chips i{font-style:normal;direction:ltr;font-size:clamp(9px,.8vw,12px);font-weight:800;color:var(--deep);
+  background:#f4fbe9;border:1px solid #cfe3a6;border-radius:7px;padding:1px 9px;white-space:nowrap}
+.cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;margin-top:1.2vh;width:100%;
+  height:clamp(44px,5.5vh,58px);background:linear-gradient(135deg,var(--amber),#d97706);color:#fff;font-weight:800;
+  font-family:'Vazirmatn',Tahoma,sans-serif;font-size:clamp(14px,1.3vw,19px);border:none;border-radius:14px;cursor:pointer;
+  box-shadow:0 12px 30px -12px rgba(245,158,11,.6);transition:.2s}
+.cta:hover{transform:translateY(-2px);box-shadow:0 16px 36px -12px rgba(245,158,11,.75)}
 
 /* ═════ اسلاید ۲ ═════ */
 .chain{direction:ltr;display:flex;flex-wrap:wrap;gap:5px;justify-content:flex-end;max-width:36vw;padding-top:.6vh}
@@ -150,7 +159,7 @@ h1 .en{background:linear-gradient(90deg,var(--lime2),var(--green));-webkit-backg
 .dot.on{width:26px;background:var(--lime)}
 
 .progress{position:fixed;top:0;left:0;right:0;height:4px;background:rgba(101,163,13,.12);z-index:95}
-.progress i{display:block;height:100%;width:16.7%;background:linear-gradient(90deg,var(--lime),var(--green));transition:width .4s}
+.progress i{display:block;height:100%;width:11.1%;background:linear-gradient(90deg,var(--lime),var(--green));transition:width .4s}
 
 .toast{position:fixed;bottom:11vh;left:50%;transform:translateX(-50%) translateY(12px);z-index:99;max-width:88vw;text-align:center;
   background:var(--deep);color:#fff;padding:9px 22px;border-radius:99px;font-size:12.5px;font-weight:700;
@@ -196,6 +205,7 @@ body.fs .nav,body.fs .progress{opacity:0;pointer-events:none}
   .value li{font-size:clamp(12.5px,3.5vw,14.5px)}
   .quote p{font-size:clamp(13px,3.7vw,15.5px)}
   .mini-flow{font-size:clamp(11px,3.1vw,13px)}
+  .chips i{font-size:clamp(11px,3.1vw,13px)}
 
   .nav{bottom:1.6vh;padding:5px 10px;gap:8px}
   .nav button{width:40px;height:40px}
@@ -205,11 +215,231 @@ body.fs .nav,body.fs .progress{opacity:0;pointer-events:none}
 @media print{
   body{overflow:visible}
   .nav,.progress,.toast{display:none!important}
+  #demoApp{display:none!important}
   .slide{position:relative;inset:auto;width:100%;height:100vh;opacity:1!important;visibility:visible!important;
     page-break-after:always;break-after:page}
   .reveal{opacity:1!important;transform:none!important;transition:none!important}
   *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
   @page{size:landscape;margin:0}
+}
+
+/* ═══════════════════════════════════════════════════
+   دموی تعاملی (Soufar MVP) — کاملاً اسکوپ‌شده زیر #demoApp
+   متغیرهای دمو روی #demoApp تعریف شده‌اند تا با ارائه تداخل نکنند
+   ═══════════════════════════════════════════════════ */
+#demoApp{--bg:#141210;--bg2:#191512;--bg3:#221d16;--line:#2b261e;--line2:#3b3427;--ink:#efe7d6;--ink2:#c8bca1;--ink3:#94896f;
+  --damb:#e8a33d;--dambl:#f2c078;--dred:#e0654a;--dteal:#57c7d4;--dgreen:#8caf6b;--mono:'IBM Plex Mono',Consolas,monospace;
+  /* نگاشت نام‌های قدیمی دمو به متغیرهای محلی */
+  position:fixed;inset:0;z-index:700;display:none;background:#141210;color:#efe7d6;
+  font-family:'Vazirmatn',Tahoma,sans-serif;font-size:13.5px;-webkit-font-smoothing:antialiased}
+#demoApp{--amber:var(--damb);--amberL:var(--dambl);--red:var(--dred);--teal:var(--dteal);--green:var(--dgreen)}
+body.demoMode #demoApp{display:block}
+#demoApp button{font-family:'Vazirmatn',Tahoma,sans-serif;cursor:pointer;border:none;background:none;color:inherit}
+body.demoMode ::-webkit-scrollbar{width:9px;height:9px}
+body.demoMode ::-webkit-scrollbar-thumb{background:#332d23;border-radius:6px;border:2px solid #191512}
+body.demoMode ::-webkit-scrollbar-track{background:transparent}
+#demoApp .mono{font-family:var(--mono);direction:ltr;unicode-bidi:isolate;letter-spacing:.02em}
+#demoApp .dim{color:var(--ink3)}
+#demoApp #boot{position:absolute;inset:0;background:var(--bg);z-index:200;display:flex;align-items:center;justify-content:center;transition:opacity .5s;cursor:pointer}
+#demoApp #boot.off{opacity:0;pointer-events:none}
+#demoApp .bcard{text-align:center;width:min(360px,86vw)}
+#demoApp .bcard svg{margin:0 auto 18px}
+#demoApp .bt1{font-weight:800;font-size:17px}
+#demoApp .bt2{color:var(--ink3);font-size:12px;margin-top:6px}
+#demoApp .bbar{height:2px;background:#272217;border-radius:2px;margin:26px 0 12px;overflow:hidden}
+#demoApp .bbar i{display:block;height:100%;width:0;background:var(--amber);animation:bfill 1.5s ease forwards}
+@keyframes bfill{to{width:100%}}
+#demoApp .bmsg{font-size:10.5px;color:var(--ink3)}
+#demoApp .bmark path{stroke-dasharray:230;stroke-dashoffset:230;animation:drw 1s ease forwards}
+#demoApp .bmark path:nth-child(2){animation-delay:.2s}
+#demoApp .bmark path:nth-child(3){animation-delay:.4s}
+@keyframes drw{to{stroke-dashoffset:0}}
+#demoApp #app{display:flex;flex-direction:column;height:100%}
+#demoApp header{height:54px;flex:0 0 54px;display:flex;align-items:center;gap:12px;padding:0 14px;background:var(--bg2);border-bottom:1px solid var(--line)}
+#demoApp .brand{display:flex;align-items:center;gap:10px;min-width:0}
+#demoApp .brand .bt{font-weight:800;font-size:14.5px;line-height:1.25;white-space:nowrap}
+#demoApp .brand .bs{font-size:10.5px;color:var(--ink3);white-space:nowrap}
+#demoApp .h-m{display:flex;align-items:center;gap:8px;flex:1;min-width:0;overflow:hidden}
+#demoApp .h-l{display:flex;align-items:center;gap:8px}
+#demoApp .chip{display:inline-flex;align-items:center;gap:6px;height:27px;padding:0 10px;border:1px solid var(--line2);border-radius:7px;font-size:11.5px;color:var(--ink2);white-space:nowrap}
+#demoApp .chip.demo{color:var(--amber);border-color:#4b3b20;background:#211a10}
+#demoApp .live{display:flex;align-items:center;gap:7px;font-size:11.5px;color:var(--ink2);white-space:nowrap}
+#demoApp .ldot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pl 2.4s infinite;flex:none}
+@keyframes pl{0%,100%{opacity:1}50%{opacity:.35}}
+#demoApp .clock{font-size:12px;color:var(--ink3)}
+#demoApp .primary{display:inline-flex;align-items:center;gap:7px;height:33px;padding:0 14px;background:var(--amber);color:#1b150b;font-weight:700;font-size:12.5px;border-radius:8px;transition:.15s}
+#demoApp .primary:hover{background:var(--amberL)}
+#demoApp .ghost{display:inline-flex;align-items:center;gap:7px;height:33px;padding:0 12px;border:1px solid var(--line2);border-radius:8px;color:var(--ink2);font-size:12.5px;transition:.15s;white-space:nowrap}
+#demoApp .ghost:hover{background:var(--bg3);color:var(--ink)}
+#demoApp .ghost.exit{border-color:#4b3b20;color:var(--amber);font-weight:700}
+#demoApp .ibtn{width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;color:var(--ink3);transition:.15s}
+#demoApp .ibtn:hover{background:var(--bg3);color:var(--ink)}
+#demoApp #main{flex:1;display:flex;min-height:0;position:relative}
+#demoApp aside{width:330px;flex:0 0 330px;background:var(--bg2);border-left:1px solid var(--line);display:flex;flex-direction:column;min-height:0;transition:flex-basis .25s,width .25s;overflow:hidden}
+body.nopanel #demoApp aside{flex-basis:0;width:0;border-left:none}
+#demoApp .tabs{display:flex;border-bottom:1px solid var(--line);flex:0 0 auto}
+#demoApp .tab{flex:1;padding:11px 4px;text-align:center;color:var(--ink3);font-weight:600;font-size:12.5px;border-bottom:2px solid transparent;transition:.15s;cursor:pointer}
+#demoApp .tab.on{color:var(--amber);border-color:var(--amber)}
+#demoApp .tabc{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:9px}
+#demoApp .hint{font-size:11px;color:var(--ink3);line-height:1.9;border:1px dashed var(--line2);border-radius:9px;padding:9px 11px}
+#demoApp .lwrap{border:1px solid var(--line);border-radius:10px;background:var(--bg);overflow:hidden;transition:border-color .15s}
+#demoApp .lwrap:hover{border-color:var(--line2)}
+#demoApp .lwrap.open{border-color:#4a3d24}
+#demoApp .lwrap.off .lmain,#demoApp .lwrap.off .lsw{opacity:.4}
+#demoApp .lrow{display:flex;align-items:center;gap:8px;padding:8px 9px;cursor:pointer;user-select:none}
+#demoApp .grip{color:#4b4433;cursor:grab;touch-action:none}
+#demoApp .grip:active{cursor:grabbing}
+#demoApp .eye{width:28px;height:28px;flex:0 0 28px;display:flex;align-items:center;justify-content:center;border-radius:7px;color:var(--ink3);transition:.15s}
+#demoApp .eye:hover{background:var(--bg3);color:var(--ink)}
+#demoApp .eye.on{color:var(--amber)}
+#demoApp .lmain{flex:1;min-width:0}
+#demoApp .ltop{display:flex;align-items:center;gap:7px}
+#demoApp .lname{font-weight:600;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#demoApp .lbadge{font-family:var(--mono);font-size:8.5px;letter-spacing:.06em;color:var(--ink3);border:1px solid var(--line2);border-radius:4px;padding:1px 4px;flex:0 0 auto}
+#demoApp .lsub{font-family:var(--mono);direction:ltr;unicode-bidi:isolate;text-align:right;font-size:9.5px;color:var(--ink3);margin-top:3px}
+#demoApp .lsw{flex:0 0 18px;height:18px;display:flex;align-items:center;justify-content:center}
+#demoApp .dsw{width:11px;height:11px;border-radius:3px;display:inline-block;flex:0 0 11px}
+#demoApp .chev{transition:transform .2s;color:var(--ink3)}
+#demoApp .lwrap.open .chev{transform:rotate(180deg)}
+#demoApp .lexp{display:grid;grid-template-rows:0fr;transition:grid-template-rows .25s ease}
+#demoApp .lwrap.open .lexp{grid-template-rows:1fr}
+#demoApp .lexp>div{overflow:hidden;min-height:0}
+#demoApp .lexp .in{padding:4px 11px 11px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:9px}
+#demoApp .frow{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:11.5px;color:var(--ink2)}
+#demoApp input[type=range]{-webkit-appearance:none;appearance:none;width:120px;height:3px;background:var(--line2);border-radius:3px}
+#demoApp input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:13px;height:13px;border-radius:4px;background:var(--amber);cursor:pointer}
+#demoApp input[type=range]::-moz-range-thumb{width:13px;height:13px;border-radius:4px;background:var(--amber);border:none;cursor:pointer}
+#demoApp .dlegend{font-size:10.5px;color:var(--ink3);display:flex;flex-direction:column;gap:5px}
+#demoApp .lgrad{height:9px;border-radius:5px;border:1px solid var(--line2)}
+#demoApp .lgradrow{display:flex;justify-content:space-between;font-family:var(--mono);font-size:9px;color:var(--ink3)}
+#demoApp .lswrow{display:flex;flex-wrap:wrap;gap:6px 14px}
+#demoApp .lswrow span{display:inline-flex;align-items:center;gap:5px}
+#demoApp .mrow{display:flex;justify-content:space-between;gap:10px;font-size:10.5px;color:var(--ink3)}
+#demoApp .mrow b{color:var(--ink2);font-weight:500;text-align:left}
+#demoApp .lbtns{display:flex;gap:6px}
+#demoApp .sbtn{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:5px;height:27px;border:1px solid var(--line2);border-radius:7px;color:var(--ink2);font-size:10.5px;transition:.15s}
+#demoApp .sbtn:hover{background:var(--bg3);color:var(--ink)}
+#demoApp .addly{display:flex;align-items:center;justify-content:center;gap:8px;height:42px;border:1px dashed var(--line2);border-radius:10px;color:var(--ink3);font-size:12px;transition:.15s}
+#demoApp .addly:hover{color:var(--amber);border-color:#4a3d24}
+#demoApp .stat3{display:flex;border:1px solid var(--line);border-radius:10px;background:var(--bg);overflow:hidden}
+#demoApp .stat3>div{flex:1;padding:11px 6px;text-align:center;border-left:1px solid var(--line)}
+#demoApp .stat3>div:last-child{border-left:none}
+#demoApp .stat3 b{display:block;font-weight:800;font-size:16px;color:var(--amber)}
+#demoApp .stat3 span{font-size:10px;color:var(--ink3)}
+#demoApp .drow{border:1px solid var(--line);border-radius:10px;background:var(--bg);padding:9px 10px;display:flex;gap:9px;align-items:flex-start;transition:.15s}
+#demoApp .drow:hover{border-color:var(--line2);background:var(--bg3)}
+#demoApp .drow .dic,#demoApp .qitem .dic{color:var(--ink3);margin-top:1px;flex:0 0 auto;display:inline-flex;width:auto;height:auto;background:none;border-radius:0;box-shadow:none}
+#demoApp .drow .dic svg,#demoApp .qitem .dic svg{width:16px;height:16px}
+#demoApp .drow .dn{font-weight:600;font-size:12px;line-height:1.6}
+#demoApp .drow .dm{font-size:9.5px;color:var(--ink3);margin-top:2px}
+#demoApp .drow .sbtn{flex:0 0 auto;height:25px;padding:0 10px}
+#demoApp .wide-ghost{height:38px;border:1px dashed var(--line2);border-radius:9px;color:var(--ink2);font-size:12px;display:flex;align-items:center;justify-content:center;gap:8px;transition:.15s}
+#demoApp .wide-ghost:hover{color:var(--amber);border-color:#4a3d24}
+#demoApp #stage{flex:1;position:relative;min-width:0;background:#151310}
+#demoApp #map{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:grab}
+#demoApp #map.dragging{cursor:grabbing}
+#demoApp #map.hov{cursor:pointer}
+#demoApp #map.selmode{cursor:crosshair}
+#demoApp #tools{position:absolute;top:14px;left:14px;display:flex;flex-direction:column;gap:7px;z-index:5}
+#demoApp .tbtn{width:37px;height:37px;display:flex;align-items:center;justify-content:center;background:rgba(23,20,16,.93);border:1px solid var(--line2);border-radius:9px;color:var(--ink2);transition:.15s}
+#demoApp .tbtn:hover{color:var(--ink);background:#26211a}
+#demoApp .tbtn.on{color:var(--amber);border-color:#5b4722;background:#241c10}
+#demoApp .tdiv{height:1px;background:var(--line2);margin:2px 4px}
+#demoApp #tooltip{position:absolute;z-index:8;pointer-events:none;background:#251f17;border:1px solid var(--line2);border-radius:8px;padding:7px 10px;font-size:11px;max-width:230px;box-shadow:0 6px 20px rgba(0,0,0,.45)}
+#demoApp #tooltip .t1{font-weight:600}
+#demoApp #tooltip .t2{color:var(--ink2);margin-top:2px;font-size:10.5px}
+#demoApp #identify{position:absolute;top:14px;left:64px;width:266px;max-height:min(430px,72%);background:#1c1813;border:1px solid var(--line2);border-radius:11px;z-index:7;display:flex;flex-direction:column;box-shadow:0 10px 34px rgba(0,0,0,.5)}
+#demoApp #identify .ih{display:flex;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid var(--line)}
+#demoApp #identify .ih b{font-size:12.5px;flex:1}
+#demoApp #identify .ib{flex:1;overflow-y:auto;padding:6px 12px 12px}
+#demoApp .irow{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px solid #241f18;font-size:11.5px}
+#demoApp .irow:last-child{border:none}
+#demoApp .irow .k{color:var(--ink3)}
+#demoApp .irow .v{text-align:left;font-weight:500}
+#demoApp .ibtns{display:flex;gap:7px;padding:0 12px 12px}
+#demoApp #selPanel{position:absolute;top:14px;left:50%;transform:translateX(-50%);z-index:7;background:#1c1813;border:1px solid var(--line2);border-radius:11px;padding:11px 13px;min-width:280px;max-width:340px;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+#demoApp #selPanel .st{font-weight:700;font-size:12.5px;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+#demoApp #selPanel .sr{display:flex;justify-content:space-between;gap:10px;font-size:11.5px;padding:4px 0;color:var(--ink2)}
+#demoApp #selPanel .sr b{color:var(--amber)}
+#demoApp #statusbar{position:absolute;left:0;right:0;bottom:0;height:33px;display:flex;align-items:center;gap:18px;padding:0 14px;background:rgba(23,20,16,.95);border-top:1px solid var(--line);font-size:11px;color:var(--ink2);z-index:5;white-space:nowrap;overflow:hidden}
+#demoApp .sbar{display:flex;align-items:center;gap:8px}
+#demoApp .sbar i{display:block;height:4px;border:1px solid var(--ink2);border-top:none;width:80px}
+#demoApp .sb-l{margin-inline-start:auto;display:flex;align-items:center;gap:16px}
+#demoApp .mback{position:absolute;inset:0;background:rgba(10,8,6,.62);backdrop-filter:blur(3px);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .22s}
+#demoApp .mback.show{opacity:1;pointer-events:auto}
+#demoApp .modal{width:min(760px,95vw);max-height:88vh;background:#1b1712;border:1px solid var(--line2);border-radius:14px;display:flex;flex-direction:column;overflow:hidden;transform:translateY(10px);transition:transform .22s;box-shadow:0 24px 70px rgba(0,0,0,.55)}
+#demoApp .mback.show .modal{transform:none}
+#demoApp .mhead{display:flex;align-items:flex-start;gap:12px;padding:16px 18px 13px;border-bottom:1px solid var(--line)}
+#demoApp .mhead h3{font-weight:800;font-size:15.5px;color:var(--ink)}
+#demoApp .mhead .ms{font-size:11.5px;color:var(--ink3);margin-top:4px;line-height:1.8}
+#demoApp .mbody{padding:16px 18px;overflow-y:auto;line-height:1.9;font-size:12.5px}
+#demoApp .steps{display:flex;padding:14px 18px 0}
+#demoApp .stp{flex:1;text-align:center;position:relative;color:var(--ink3);font-size:10.5px;padding-top:26px}
+#demoApp .stp::before{content:attr(data-n);position:absolute;top:0;left:50%;transform:translateX(-50%);width:20px;height:20px;border-radius:50%;border:1.5px solid var(--line2);background:var(--bg2);font-family:var(--mono);font-size:10px;line-height:18px;color:var(--ink3)}
+#demoApp .stp::after{content:'';position:absolute;top:10px;right:calc(50% + 14px);left:calc(-50% + 14px);height:1.5px;background:var(--line2)}
+#demoApp .stp:first-child::after{display:none}
+#demoApp .stp.on{color:var(--amber)}
+#demoApp .stp.on::before{border-color:var(--amber);color:var(--amber)}
+#demoApp .stp.done::before{content:'✓';border-color:var(--amber);background:var(--amber);color:#1b150b}
+#demoApp .wbody{flex:1;overflow-y:auto;padding:18px;min-height:320px}
+#demoApp .wt{font-weight:700;font-size:13px;margin-bottom:4px;color:var(--ink)}
+#demoApp .wd{font-size:11.5px;color:var(--ink3);line-height:2;margin-bottom:12px}
+#demoApp .qlist{display:flex;flex-direction:column;gap:9px;margin-bottom:18px}
+#demoApp .qitem{border:1px solid var(--line2);border-radius:10px;padding:11px 12px;display:flex;gap:10px;cursor:pointer;transition:.15s;background:var(--bg)}
+#demoApp .qitem:hover{border-color:#4a3d24}
+#demoApp .qitem.sel{border-color:var(--amber);background:#221b10}
+#demoApp .qitem.sel .dic{color:var(--amber)}
+#demoApp .qitem .qn{font-weight:600;font-size:12.5px}
+#demoApp .drop{border:1.5px dashed var(--line2);border-radius:11px;padding:22px;text-align:center;color:var(--ink3);cursor:pointer;transition:.15s;font-size:12px}
+#demoApp .drop:hover,#demoApp .drop.over,#demoApp .drop.sel{border-color:var(--amber);color:var(--ink2);background:#1e1912}
+#demoApp .drop.err{border-color:#5c3328;color:#ef8f7c}
+#demoApp .drop .d2{display:block;font-size:10.5px;margin-top:5px;opacity:.8}
+#demoApp .drop svg{margin:0 auto 9px;opacity:.75}
+#demoApp .scanrow{display:flex;justify-content:space-between;gap:14px;padding:8px 0;border-bottom:1px solid #241f18;font-size:12px}
+#demoApp .scanrow .k{color:var(--ink3);flex:0 0 auto}
+#demoApp .scanrow .v{text-align:left;font-weight:500}
+#demoApp .dchips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+#demoApp .dchips i{font-style:normal;font-size:10.5px;border:1px solid var(--line2);border-radius:5px;padding:2px 8px;color:var(--ink2);background:transparent;font-weight:500}
+#demoApp .frow2{display:flex;flex-direction:column;gap:6px;margin-bottom:13px}
+#demoApp .frow2 span{font-size:11.5px;color:var(--ink2)}
+#demoApp .frow2 input,#demoApp .frow2 textarea,#demoApp .frow2 select{background:var(--bg);border:1px solid var(--line2);border-radius:8px;padding:9px 11px;color:var(--ink);font-family:'Vazirmatn',Tahoma,sans-serif;font-size:12.5px;resize:vertical}
+#demoApp .frow2 input:focus,#demoApp .frow2 textarea:focus,#demoApp .frow2 select:focus{border-color:#5b4722;outline:none}
+#demoApp .ferr{font-size:11px;color:#ef8f7c;margin:-8px 0 10px;display:none}
+#demoApp .plog{background:#141110;border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:11.5px;min-height:190px;line-height:2.2}
+#demoApp .plog div{opacity:0;animation:lin .3s forwards}
+@keyframes lin{to{opacity:1}}
+#demoApp .pbar{height:3px;background:var(--line);border-radius:3px;margin:14px 0 10px;overflow:hidden}
+#demoApp .pbar i{display:block;height:100%;width:0;background:var(--amber);transition:width .5s}
+#demoApp .psteps{display:flex;justify-content:space-between;font-size:10px;color:var(--ink3)}
+#demoApp .psteps b.on{color:var(--amber)}
+#demoApp .wfoot{display:flex;justify-content:space-between;gap:10px;padding:13px 18px;border-top:1px solid var(--line)}
+#demoApp .btn2{height:36px;padding:0 18px;border-radius:8px;font-size:12.5px;font-weight:600;border:1px solid var(--line2);color:var(--ink2);transition:.15s}
+#demoApp .btn2:hover:not(:disabled){background:var(--bg3);color:var(--ink)}
+#demoApp .btn2:disabled{opacity:.4;cursor:not-allowed}
+#demoApp .btn2.main{background:var(--amber);border-color:var(--amber);color:#1b150b}
+#demoApp .btn2.main:hover:not(:disabled){background:var(--amberL)}
+#demoApp .accitem{display:flex;gap:11px;padding:9px 0;border-bottom:1px solid #241f18;align-items:flex-start}
+#demoApp .accitem:last-child{border:none}
+#demoApp .accitem .ck{color:var(--green);flex:0 0 auto;margin-top:3px}
+#demoApp .accitem p{font-size:12.5px;line-height:2}
+#demoApp .dchain{margin:8px 0 14px}
+#demoApp .chit{display:flex;gap:11px;align-items:flex-start}
+#demoApp .chit .n{width:22px;height:22px;flex:0 0 22px;border-radius:50%;border:1.5px solid #5b4722;color:var(--amber);font-family:var(--mono);font-size:10px;display:flex;align-items:center;justify-content:center}
+#demoApp .chit .t{font-size:12px;padding-top:3px}
+#demoApp .chit::after{content:'';flex:0 0 22px;border-right:1px dashed #4a3d24;margin:3px 0 7px}
+#demoApp .chit:last-child::after{display:none}
+#demoApp #toasts{position:absolute;bottom:46px;left:16px;z-index:60;display:flex;flex-direction:column;gap:8px}
+#demoApp .dtoast{display:flex;align-items:center;gap:9px;background:#241e14;border:1px solid #4a3d24;border-radius:10px;padding:10px 14px;font-size:12px;color:var(--ink);box-shadow:0 8px 26px rgba(0,0,0,.5);animation:dtin .25s;max-width:330px;position:static;opacity:1;transform:none;text-align:right;font-weight:500}
+#demoApp .dtoast svg{color:var(--amber);flex:0 0 auto}
+#demoApp .dtoast.out{opacity:0;transform:translateY(6px);transition:.3s}
+@keyframes dtin{from{opacity:0;transform:translateY(8px)}}
+@media (max-width:1080px){#demoApp .live,#demoApp .clock{display:none}}
+@media (max-width:820px){
+  #demoApp aside{position:absolute;top:0;bottom:0;right:0;z-index:30;width:min(320px,88vw);flex-basis:auto;box-shadow:-14px 0 40px rgba(0,0,0,.5)}
+  body.nopanel #demoApp aside{width:0;flex-basis:0}
+  #demoApp .brand .bs{display:none}
+  #demoApp #identify{left:60px;width:236px}
+  #demoApp .sb-l span:nth-child(3){display:none}
 }
 </style>
 </head>
@@ -313,7 +543,7 @@ body.fs .nav,body.fs .progress{opacity:0;pointer-events:none}
 
   <footer class="ft">
     <span>ISDS AI Factory — زیرساخت یکپارچه هوش مصنوعی سازمانی</span>
-    <span class="pg">اسلاید ۱ از ۶ • AIF — معرفی و قابلیت‌های اصلی</span>
+    <span class="pg">اسلاید ۱ از ۹ • AIF — معرفی و قابلیت‌های اصلی</span>
   </footer>
 </section>
 
@@ -423,7 +653,7 @@ body.fs .nav,body.fs .progress{opacity:0;pointer-events:none}
 
   <footer class="ft">
     <span>منابع: راهنمای مدیریتی سکو • ISDS AI Factory Tools</span>
-    <span class="pg">اسلاید ۲ از ۶ • AIF — توسعه، استقرار و ارزش سازمانی</span>
+    <span class="pg">اسلاید ۲ از ۹ • AIF — توسعه، استقرار و ارزش سازمانی</span>
   </footer>
 </section>
 
@@ -524,7 +754,7 @@ body.fs .nav,body.fs .progress{opacity:0;pointer-events:none}
 
   <footer class="ft">
     <span>NEXUS STUDIO — پلتفرم عاملیت‌محور اجرای فرایندهای هوشمند سازمانی</span>
-    <span class="pg">اسلاید ۳ از ۶ • NEXUS — معرفی و موتورهای اصلی</span>
+    <span class="pg">اسلاید ۳ از ۹ • NEXUS — معرفی و موتورهای اصلی</span>
   </footer>
 </section>
 
@@ -634,7 +864,7 @@ body.fs .nav,body.fs .progress{opacity:0;pointer-events:none}
 
   <footer class="ft">
     <span>منابع: معرفی NEXUS STUDIO • مستندات قابلیت‌ها و کاربردها</span>
-    <span class="pg">اسلاید ۴ از ۶ • NEXUS — اتصال، حاکمیت و ارزش سازمانی</span>
+    <span class="pg">اسلاید ۴ از ۹ • NEXUS — اتصال، حاکمیت و ارزش سازمانی</span>
   </footer>
 </section>
 
@@ -735,7 +965,7 @@ body.fs .nav,body.fs .progress{opacity:0;pointer-events:none}
 
   <footer class="ft">
     <span>ISDS InsightAI — AI-Powered Conversational BI &amp; Decision Intelligence Platform</span>
-    <span class="pg">اسلاید ۵ از ۶ • InsightAI — معرفی و قابلیت‌های اصلی</span>
+    <span class="pg">اسلاید ۵ از ۹ • InsightAI — معرفی و قابلیت‌های اصلی</span>
   </footer>
 </section>
 
@@ -823,34 +1053,278 @@ body.fs .nav,body.fs .progress{opacity:0;pointer-events:none}
         <li>کاربر از «مصرف‌کننده گزارش» به <b>تصمیم‌ساز</b> تبدیل می‌شود</li>
         <li>هم‌زمان: <b>Governance</b>، کیفیت داده و مستندسازی تحلیلی حفظ می‌شود</li>
       </ul>
-      <div class="mini-flow">زنجیره قدیم: User ← Analyst ← BI ← Data ← Report ← مدیر | جدید: مدیر ← AI ← داده ← Insight</div>
+      <div class="mini-flow">زنجیره قدیم: User ← Analyst ← BI ← Dashboard ← Decision • زنجیره جدید: User ← InsightAI ← Decision</div>
     </article>
 
     <aside class="value reveal d7">
-      <h3>✦ چرا InsightAI؟</h3>
+      <h3>✦ ارزش پیشنهادی برای سازمان</h3>
       <ul>
-        <li>حذف وابستگی تیم BI برای هر سؤال ساده و گزارش جدید</li>
-        <li>سؤال با زبان طبیعی ← پاسخ به زبان طبیعی</li>
-        <li>پوشش کامل: Data ← Insight ← Action</li>
-        <li>BI Automation، KPI Monitoring و Anomaly Detection</li>
-        <li>تصمیم‌گیری سریع‌تر، گسترده‌تر و مبتنی بر داده</li>
+        <li>دسترسی همه کاربران به تحلیل داده — بدون نیاز به SQL و ابزار BI</li>
+        <li>کاهش زمان تولید گزارش و داشبورد از روزها به دقیقه‌ها</li>
+        <li>دموکراتیزه‌شدن تحلیل داده در تمام سطوح سازمان</li>
+        <li>پایش مستمر KPIها و هشدار به‌موقع به مدیران</li>
+        <li>حفظ حاکمیت داده، کیفیت و مستندسازی تحلیلی</li>
       </ul>
-      <div class="vfoot">تحلیل انحراف از هدف • Drill-down تحلیلی • یک نمای یکپارچه از شاخص‌ها</div>
+      <div class="vfoot">گفتگو + داده یکپارچه + KPI + Dashboard + Alert = تصمیم سریع‌تر</div>
     </aside>
   </div>
 
   <div class="quote reveal d7">
     <span class="qm">”</span>
-    <p>با <b>ISDS InsightAI</b> از داده خام تا تصمیم هوشمند، فقط با یک گفتگو فاصله است: <b>From Raw Data to Intelligent Decisions — Through Conversation.</b></p>
+    <p><b>ISDS InsightAI</b> فاصله میان «داده» و «تصمیم» را فشرده می‌کند: کاربر به زبان طبیعی سؤال می‌پرسد و سامانه در یک خط تولید یکپارچه، تحلیل، KPI، داشبورد، گزارش و هشدار را ارائه می‌دهد — از Business Intelligence تا Decision Intelligence.</p>
   </div>
 
   <footer class="ft">
-    <span>منابع: معرفی ISDS InsightAI • مستندات قابلیت‌ها و Positioning</span>
-    <span class="pg">اسلاید ۶ از ۶ • InsightAI — پایش، گزارش‌سازی و تصمیم‌یاری</span>
+    <span>منابع: معرفی ISDS InsightAI • مستندات قابلیت‌ها و کاربردها</span>
+    <span class="pg">اسلاید ۶ از ۹ • InsightAI — پایش، گزارش‌سازی و تصمیم‌یاری</span>
   </footer>
 </section>
 
-<!-- ═══════════ کنترل ═══════════ -->
+<!-- ═══════════════════════════════════════════
+     محصول چهارم: EXPLORATION WEBGIS — اسلاید ۷
+     ═══════════════════════════════════════════ -->
+<section class="slide" id="gis1">
+  <header class="hd">
+    <div class="reveal d1">
+      <div class="badge"><i></i> محصول چهارم &nbsp;|&nbsp; ISDS EXPLORATION WEBGIS</div>
+      <h1>سامانه هوشمند مدیریت <span class="en">داده‌های مکانی اکتشافی</span></h1>
+      <div class="sub">یکپارچه‌سازی، مدیریت و بصری‌سازی داده‌های اکتشافی معدن در یک محیط WebGIS واحد</div>
+    </div>
+    <div class="donut-wrap reveal d2">
+      <div class="donut" style="background:conic-gradient(var(--lime) 0 72deg,var(--green) 0 144deg,var(--em) 0 216deg,var(--teal) 0 288deg,var(--amber) 0 360deg)"><span>MVP</span></div>
+      <ul class="legend">
+        <li><i style="--c:var(--lime)"></i>Point</li>
+        <li><i style="--c:var(--green)"></i>Line</li>
+        <li><i style="--c:var(--em)"></i>Polygon</li>
+        <li><i style="--c:var(--teal)"></i>Raster باینری</li>
+        <li><i style="--c:var(--amber)"></i>Raster RGB</li>
+        <li class="legend-cap">انواع دادهٔ مکانی پشتیبانی‌شده در نسخهٔ MVP</li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="body1">
+    <aside class="journey reveal d3">
+      <div class="j-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="4"/></svg>
+        زنجیرهٔ جریان دادهٔ مکانی
+      </div>
+      <div class="j-steps">
+        <div class="j-step"><span class="j-num">۱</span><div><b>Dataset ورودی</b><small>فایل‌ها و دادهٔ مکانی</small></div></div>
+        <div class="j-step"><span class="j-num">۲</span><div><b>Metadata</b><small>اطلاعات توصیفی</small></div></div>
+        <div class="j-step"><span class="j-num">۳</span><div><b>اعتبارسنجی و پردازش</b><small>بررسی CRS و ساختار</small></div></div>
+        <div class="j-step"><span class="j-num">۴</span><div><b>Spatial Storage</b><small>ذخیره‌سازی متمرکز</small></div></div>
+        <div class="j-step"><span class="j-num">۵</span><div><b>Layer Creation</b><small>ساخت لایه‌های اطلاعاتی</small></div></div>
+        <div class="j-step"><span class="j-num">۶</span><div><b>WebGIS</b><small>نمایش تحت وب</small></div></div>
+        <div class="j-step"><span class="j-num">۷</span><div><b>تعامل مکانی</b><small>Identify و انتخاب محدوده</small></div></div>
+        <div class="j-step"><span class="j-num">۸</span><div><b>Multi-Layer</b><small>ترکیب چند لایه</small></div></div>
+      </div>
+      <div class="j-note">معماری امکان اضافه‌شدن تدریجی مؤلفه‌ها و لایه‌های اطلاعاتی جدید و توسعهٔ قابلیت‌های تحلیلی پیشرفته‌تر را فراهم می‌کند.</div>
+    </aside>
+
+    <div class="cards4">
+      <article class="cap reveal d4" data-n="۰۱" style="--a:var(--lime);--b:#4d7c0f">
+        <div class="cap-h">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></svg></span>
+          <h3><span class="no">۰۱</span>ورود داده - Data Ingestion</h3>
+        </div>
+        <ul>
+          <li>ثبت و ورود <b>Datasetهای مکانی</b> به سامانه</li>
+          <li>مدیریت <b>Metadata</b> و اطلاعات توصیفی هر داده</li>
+          <li>نقطهٔ ورود یکپارچه برای داده‌های اکتشافی سازمان</li>
+        </ul>
+      </article>
+
+      <article class="cap reveal d5" data-n="۰۲" style="--a:var(--green);--b:#15803d">
+        <div class="cap-h">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="10" y="10" width="4" height="4"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg></span>
+          <h3><span class="no">۰۲</span>پردازش مکانی - Spatial Processing</h3>
+        </div>
+        <ul>
+          <li>شناخت ساختار داده و بررسی <b>CRS</b></li>
+          <li>اعتبارسنجی و آماده‌سازی دادهٔ ورودی</li>
+          <li>پردازش اولیه برای ورود به چرخهٔ مدیریت داده</li>
+        </ul>
+      </article>
+
+      <article class="cap reveal d6" data-n="۰۳" style="--a:var(--em);--b:#047857">
+        <div class="cap-h">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span>
+          <h3><span class="no">۰۳</span>بخش Spatial Data Management</h3>
+        </div>
+        <ul>
+          <li>ذخیره‌سازی متمرکز <b>Dataset</b> و <b>Layer</b></li>
+          <li>مدیریت یکپارچهٔ داده‌های مکانی در یک محیط واحد</li>
+          <li>دسترسی مشترک به داده در تمام بخش‌ها</li>
+        </ul>
+      </article>
+
+      <article class="cap reveal d7" data-n="۰۴" style="--a:var(--amber);--b:#d97706">
+        <div class="cap-h">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span>
+          <h3><span class="no">۰۴</span>مدیریت لایه ها - Layer Management</h3>
+        </div>
+        <ul>
+          <li>فعال/غیرفعال‌سازی و <b>تغییر ترتیب</b> لایه‌ها</li>
+          <li>کنترل دقیق نمایش و ترکیب اطلاعات مکانی</li>
+        </ul>
+        <div class="mini-flow">نمونه: فعال‌سازی لایهٔ زمین‌شناسی ← تنظیم ترتیب نمایش ← هم‌پوشانی با لایهٔ عارضه‌ای ← Identify عوارض</div>
+      </article>
+    </div>
+  </div>
+
+  <footer class="ft">
+    <span>ISDS Exploration WebGIS — یکپارچه‌سازی، مدیریت و بصری‌سازی داده‌های اکتشافی</span>
+    <span class="pg">اسلاید ۷ از ۹ • Exploration WebGIS — معرفی و قابلیت‌های GIS</span>
+  </footer>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     محصول چهارم: EXPLORATION WEBGIS — اسلاید ۸
+     ═══════════════════════════════════════════ -->
+<section class="slide" id="gis2">
+  <header class="hd">
+    <div class="reveal d1">
+      <div class="badge"><i></i> ISDS EXPLORATION WEBGIS • بخش دوم</div>
+      <h1>نمایش مکانی، دامنهٔ داده و مسیر توسعهٔ <span class="en">AI</span></h1>
+      <div class="sub">از WebGIS تعاملی تا لایهٔ هوشمند تحلیل اکتشافی و تصمیم‌یاری</div>
+    </div>
+    <div class="chain reveal d2">
+      <span>Data</span><em>→</em><span>Layers</span><em>→</em><span>WebGIS</span><em>→</em><span>Retrieval</span><em>→</em><span>AI Analysis</span><em>→</em><span>Drilling</span>
+    </div>
+  </header>
+
+  <div class="g2">
+    <article class="cap reveal d3" data-n="۰۵" style="--a:var(--lime);--b:#4d7c0f">
+      <div class="cap-h">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a13.5 13.5 0 0 1 0 18M12 3a13.5 13.5 0 0 0 0 18"/></svg></span>
+        <h3><span class="no">۰۵</span>بخش WebGIS</h3>
+      </div>
+      <ul>
+        <li>نمایش و تعامل با داده‌های مکانی <b>در محیط تحت وب</b></li>
+        <li>بدون نیاز به نرم‌افزارهای Desktop پراکنده</li>
+        <li>دسترسی متمرکز کاربران به نقشهٔ سازمانی</li>
+      </ul>
+    </article>
+
+    <article class="cap reveal d4" data-n="۰۶" style="--a:var(--green);--b:#15803d">
+      <div class="cap-h">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/><path d="M13 13l6 6"/></svg></span>
+        <h3><span class="no">۰۶</span>بخش Spatial Interaction</h3>
+      </div>
+      <ul>
+        <li>انتخاب محدوده روی نقشه</li>
+        <li><b>Identify</b> عوارض و مشاهدهٔ اطلاعات توصیفی</li>
+        <li>پرس‌وجوی سریع از ویژگی‌های هر عارضه</li>
+      </ul>
+    </article>
+
+    <article class="cap reveal d5" data-n="۰۷" style="--a:var(--em);--b:#047857">
+      <div class="cap-h">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="13" height="13" rx="2"/><path d="M21 8v11a2 2 0 0 1-2 2H8"/></svg></span>
+        <h3><span class="no">۰۷</span>بخش Multi-Layer Visualization</h3>
+      </div>
+      <ul>
+        <li>نمایش و بررسی هم‌زمان <b>چند لایهٔ اطلاعاتی</b> روی یک محدوده</li>
+        <li>مقایسهٔ بصری شواهد اکتشافی</li>
+        <li>پایهٔ نمایش برای تحلیل‌های ترکیبی آینده</li>
+      </ul>
+    </article>
+
+    <article class="cap reveal d6" data-n="۰۸" style="--a:var(--teal);--b:#0f766e">
+      <div class="cap-h">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.3 7l8.7 5 8.7-5M12 22V12"/></svg></span>
+        <h3><span class="no">۰۸</span>دامنهٔ داده در نسخهٔ MVP</h3>
+      </div>
+      <ul>
+        <li>پشتیبانی از انواع <b>برداری و رستری</b> در چرخهٔ پردازش و نمایش</li>
+        <li>گسترهٔ دادهٔ قابل بارگذاری در نسخهٔ فعلی محصول</li>
+      </ul>
+      <div class="chips"><i>Point</i><i>Line</i><i>Polygon</i><i>Binary Raster</i><i>RGB Raster</i></div>
+    </article>
+
+    <article class="cap reveal d7" data-n="۰۹" style="--a:var(--amber);--b:#d97706">
+      <div class="cap-h">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 6l-8.5 8.5-5-5L2 16"/><path d="M16 6h6v6"/></svg></span>
+        <h3><span class="no">۰۹</span>مسیر توسعه — لایهٔ هوشمند AI</h3>
+      </div>
+      <ul>
+        <li><b>بازیابی اطلاعات با زبان طبیعی</b> از داده‌های اکتشافی</li>
+        <li>تحلیل و ترکیب هوشمند لایه‌ها، <b>تولید گزارش و بینش</b></li>
+        <li>شناسایی محدوده‌های پتانسیل‌دار و <b>پیشنهاد نقاط حفاری</b></li>
+      </ul>
+      <div class="mini-flow">GIS و مدیریت داده ← بازیابی هوشمند ← تحلیل به‌کمک AI ← تصمیم‌یاری اکتشاف ← پیشنهاد نقاط حفاری</div>
+    </article>
+
+    <aside class="value reveal d7">
+      <h3>✦ ارزش و چشم‌انداز محصول</h3>
+      <ul>
+        <li>تجمیع داده‌های پراکندهٔ اکتشافی در یک محیط واحد</li>
+        <li>مدیریت متمرکز Dataset و Layer به‌همراه Metadata</li>
+        <li>کاهش وابستگی به ابزارهای Desktop و فایل‌های پراکنده</li>
+        <li>پایهٔ فنی آماده برای تحلیل‌های هوش مصنوعی</li>
+        <li>تصمیم‌گیری سریع‌تر و کم‌ریسک‌تر در اکتشاف معدن</li>
+      </ul>
+      <div class="vfoot">Vision: AI-Powered Geospatial Exploration Platform</div>
+    </aside>
+  </div>
+
+  <div class="quote reveal d7">
+    <span class="qm">”</span>
+    <p>چشم‌انداز محصول فراتر از یک <b>WebGIS</b> است و به سمت ساخت یک <b>AI-Powered Geospatial Exploration Platform</b> برای مدیریت، تحلیل و تصمیم‌گیری هوشمند در فرایند اکتشاف معدن حرکت می‌کند.</p>
+  </div>
+
+  <footer class="ft">
+    <span>منابع: سند Product Overview • نسخهٔ ۱٫۰</span>
+    <span class="pg">اسلاید ۸ از ۹ • Exploration WebGIS — نمایش مکانی و مسیر توسعهٔ AI</span>
+  </footer>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     اسلاید ۹: راه‌انداز دموی تعاملی (Soufar MVP)
+     ═══════════════════════════════════════════ -->
+<section class="slide" id="demo1">
+  <header class="hd">
+    <div class="reveal d1">
+      <div class="badge"><i></i> محصول چهارم &nbsp;|&nbsp; LIVE MVP DEMO — INTERACTIVE</div>
+      <h1>دموی تعاملی <span class="en">Exploration WebGIS</span></h1>
+      <div class="sub">نمونهٔ اجرایی MVP با دادهٔ نمایشی محوطهٔ سنگان — کاملاً در مرورگر و بدون سرور</div>
+    </div>
+    <div class="chain reveal d2">
+      <span>Ingest</span><em>→</em><span>Process</span><em>→</em><span>Store</span><em>→</em><span>Layer</span><em>→</em><span>WebGIS</span><em>→</em><span>Interact</span>
+    </div>
+  </header>
+
+  <div class="body1" style="align-items:center;justify-content:center">
+    <article class="cap reveal d3" style="max-width:780px;width:100%;margin:0 auto;--a:var(--amber);--b:#b45309;padding:2.4vh 1.8vw">
+      <div class="cap-h">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M8 5v14l11-7z"/></svg></span>
+        <h3>✦ دموی زندهٔ MVP — دادهٔ نمایشی</h3>
+      </div>
+      <ul>
+        <li>ویزارد <b>ورود دیتاست</b> چهار مرحله‌ای: دریافت ← بازرسی ← متادیتا ← پردازش و انتشار</li>
+        <li>پنل <b>مدیریت لایه‌ها</b>: نمایش/پنهان، شفافیت، تغییر ترتیب و متادیتا</li>
+        <li><b>Identify</b> عوارض و <b>انتخاب محدودهٔ</b> مکانی با گزارش نتایج</li>
+        <li><b>مخزن داده</b>: آمار دیتاست‌ها، لایه‌های فعال و صف ورود</li>
+        <li>نقشهٔ Canvas با شبکهٔ جغرافیایی، مقیاس و مختصات UTM/جغرافیایی</li>
+      </ul>
+      <button class="cta" id="demoLaunch">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="flex:none"><path d="M8 5v14l11-7z"/></svg>
+        ورود به دموی تعاملی
+      </button>
+      <div class="mini-flow">پس از پایان نمایش، با دکمهٔ «بازگشت به ارائه» در هدر دمو (یا کلید ESC) به همین اسلایدها برگردید.</div>
+    </article>
+  </div>
+
+  <footer class="ft">
+    <span>ISDS Exploration WebGIS — نمونهٔ MVP نسخهٔ ۱٫۰ • دادهٔ نمایشی</span>
+    <span class="pg">اسلاید ۹ از ۹ • دموی تعاملی زنده</span>
+  </footer>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     کنترل ارائه
+     ═══════════════════════════════════════════ -->
 <nav class="nav" id="nav">
   <button id="prev" title="اسلاید قبلی" aria-label="قبلی"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></button>
   <div class="dots" id="dots"></div>
@@ -863,6 +1337,176 @@ body.fs .nav,body.fs .progress{opacity:0;pointer-events:none}
 
 <div class="toast" id="toast"></div>
 
+<!-- ═══════════════════════════════════════════
+     اپلیکیشن دمو (Soufar MVP) — تمام‌صفحه
+     ═══════════════════════════════════════════ -->
+<div id="demoApp">
+
+  <div id="boot">
+    <div class="bcard">
+      <svg class="bmark" viewBox="0 0 48 48" width="58" height="58" fill="none" stroke="#E8A33D" stroke-width="1.6">
+        <path d="M24 4 42 14v20L24 44 6 34V14Z"/><path d="M24 12 35 18.5v11L24 36 13 29.5v-11Z" opacity=".6"/><path d="M24 20.5 28 23v4.5L24 30l-4-2.5V23Z" opacity=".35"/>
+      </svg>
+      <div class="bt1">سامانهٔ داده‌های مکانی اکتشافی</div>
+      <div class="bt2">مرکز ISDS شریف — نمونهٔ MVP نسخهٔ ۱٫۰</div>
+      <div class="bbar"><i></i></div>
+      <div class="bmsg" id="bootMsg">initializing spatial renderer…</div>
+    </div>
+  </div>
+
+  <div id="app">
+    <header>
+      <button class="ibtn" id="panelBtn" title="نمایش/پنهان‌کردن پنل"></button>
+      <div class="brand">
+        <svg viewBox="0 0 48 48" width="30" height="30" fill="none" stroke="#E8A33D" stroke-width="2"><path d="M24 4 42 14v20L24 44 6 34V14Z"/><path d="M24 12 35 18.5v11L24 36 13 29.5v-11Z" opacity=".55"/><path d="M24 20 28 22.5v5L24 30l-4-2.5v-5Z" opacity=".3"/></svg>
+        <div><div class="bt">سامانهٔ داده‌های مکانی اکتشافی</div><div class="bs">ISDS شریف · نسخهٔ MVP 1.0</div></div>
+      </div>
+      <div class="h-m">
+        <span class="chip"><span id="pinIco"></span>محوطهٔ سنگان · خراسان شمالی</span>
+        <span class="chip mono">EPSG:32641</span>
+        <span class="chip demo">دادهٔ نمایشی</span>
+      </div>
+      <div class="h-l">
+        <button class="ghost exit" id="demoExit" title="بازگشت به ارائه (ESC)">✕ بازگشت به ارائه</button>
+        <span class="live"><i class="ldot"></i>سرویس محلی</span>
+        <span class="clock mono" id="clock"></span>
+        <button class="ghost" id="acceptBtn"><span id="accIco"></span>معیارهای پذیرش</button>
+        <button class="ibtn" id="helpBtn" title="راهنما و سناریوی نمایش"></button>
+        <button class="primary" id="ingestBtn"><span id="upIco"></span>ورود دیتاست</button>
+      </div>
+    </header>
+
+    <div id="main">
+      <aside id="panel">
+        <div class="tabs">
+          <div class="tab on" data-t="layers">لایه‌ها <b id="layCount"></b></div>
+          <div class="tab" data-t="repo">مخزن داده</div>
+        </div>
+        <div class="tabc" id="tc-layers">
+          <div class="hint">روی ردیف هر لایه کلیک کنید تا شفافیت، راهنمای نقشه و متادیتای آن باز شود. با کشیدن دستگیرهٔ کنار هر ردیف، ترتیب نمایش لایه‌ها روی نقشه تغییر می‌کند.</div>
+          <div id="layerList" style="display:flex;flex-direction:column;gap:9px"></div>
+          <button class="addly" id="addLayerBtn"><span id="addIco"></span>ورود دیتاست جدید</button>
+        </div>
+        <div class="tabc" id="tc-repo" hidden>
+          <div class="stat3">
+            <div><b id="stDS">—</b><span>دیتاست</span></div>
+            <div><b id="stLY">—</b><span>لایهٔ فعال</span></div>
+            <div><b id="stFT">—</b><span>عارضه / سلول</span></div>
+          </div>
+          <div id="dsList" style="display:flex;flex-direction:column;gap:9px"></div>
+          <button class="wide-ghost" id="repoIngest"><span id="upIco2"></span>ورود دیتاست جدید از مسیر اشتراکی</button>
+        </div>
+      </aside>
+
+      <section id="stage">
+        <canvas id="map"></canvas>
+        <div id="tools">
+          <button class="tbtn" id="tZin" title="بزرگ‌نمایی"></button>
+          <button class="tbtn" id="tZout" title="کوچک‌نمایی"></button>
+          <button class="tbtn" id="tFit" title="تطبیق نما با محوطه"></button>
+          <div class="tdiv"></div>
+          <button class="tbtn" id="tBox" title="انتخاب محدودهٔ مکانی"></button>
+          <button class="tbtn" id="tClr" title="پاک‌کردن انتخاب‌ها"></button>
+        </div>
+        <div id="tooltip" hidden><div class="t1"></div><div class="t2"></div></div>
+        <div id="identify" hidden>
+          <div class="ih"><span id="idIco"></span><b>مشخصات عارضهٔ مکانی</b><button class="ibtn" id="idClose"></button></div>
+          <div class="ib" id="idBody"></div>
+          <div class="ibtns" id="idBtns"></div>
+        </div>
+        <div id="selPanel" hidden>
+          <div class="st"><span id="selIco"></span>نتایج انتخاب محدوده<button class="ibtn" id="selClose" style="margin-inline-start:auto"></button></div>
+          <div id="selBody"></div>
+        </div>
+        <footer id="statusbar">
+          <span class="mono" id="sbEN">E ——— · N ———</span>
+          <span class="mono dim" id="sbLL"></span>
+          <div class="sbar"><i id="sbBar"></i><span id="sbScaleTxt"></span></div>
+          <div class="sb-l">
+            <span class="mono" id="sbZoom"></span>
+            <span class="dim">مقیاس <span class="mono" id="sbRatio"></span></span>
+            <span class="dim mono">Canvas 2D · WebGIS</span>
+          </div>
+        </footer>
+        <div id="toasts"></div>
+      </section>
+    </div>
+  </div>
+
+  <!-- ویزارد ورود داده -->
+  <div class="mback" id="wizBack">
+    <div class="modal" role="dialog" aria-modal="true">
+      <div class="mhead"><div style="flex:1"><h3>ورود دیتاست جدید</h3><div class="ms">سناریوی End-to-End: دریافت فایل ← ثبت متادیتا ← شناسایی ساختار ← پردازش ← ذخیره‌سازی ← ساخت لایه ← نمایش روی نقشه</div></div><button class="ibtn" id="wizClose"></button></div>
+      <div class="steps">
+        <div class="stp on" data-n="1">انتخاب منبع</div>
+        <div class="stp" data-n="2">بازرسی و شناسایی</div>
+        <div class="stp" data-n="3">ثبت متادیتا</div>
+        <div class="stp" data-n="4">پردازش و انتشار</div>
+      </div>
+      <div class="wbody">
+        <section id="ws1">
+          <h4 class="wt">دیتاست‌های در صف ورود</h4>
+          <p class="wd">این فایل‌ها از مسیر اشتراکی به سامانه رسیده‌اند و منتظر تأیید ورود هستند.</p>
+          <div class="qlist" id="qlist"></div>
+          <h4 class="wt">یا فایل GeoJSON خودتان را وارد کنید</h4>
+          <div class="drop" id="drop">
+            <span id="dropIco"></span>
+            <span>فایل <b>GeoJSON</b> را اینجا رها کنید یا برای انتخاب کلیک کنید</span>
+            <span class="d2">پردازش کاملاً در مرورگر و به‌صورت محلی انجام می‌شود</span>
+          </div>
+          <input type="file" id="fileIn" accept=".json,.geojson,application/json" hidden>
+        </section>
+        <section id="ws2" hidden>
+          <h4 class="wt">نتیجهٔ بازرسی اولیه</h4>
+          <p class="wd">سامانه ساختار، نوع هندسه، سیستم مختصات و فیلدهای توصیفی فایل را شناسایی کرد:</p>
+          <div id="scanOut"></div>
+        </section>
+        <section id="ws3" hidden>
+          <h4 class="wt">ثبت متادیتای دیتاست</h4>
+          <p class="wd">اطلاعات زیر همراه لایه در مخزن داده ثبت و از طریق پنل «مخزن داده» قابل مشاهده خواهد بود.</p>
+          <div class="frow2"><span>عنوان لایه *</span><input id="mfTitle" type="text" placeholder="مثال: مغناطیس‌سنجی زمینی کمپین ۱۴۰۴"></div>
+          <div class="ferr" id="mfErr">عنوان لایه نمی‌تواند خالی باشد.</div>
+          <div class="frow2"><span>متولی داده</span><select id="mfOwner"><option>واحد اکتشاف</option><option>ISDS — تیم داده</option><option>سازمان زمین‌شناسی</option><option>نامشخص</option></select></div>
+          <div class="frow2"><span>تاریخ ثبت</span><input id="mfDate" type="text" value="1404/06/10"></div>
+          <div class="frow2"><span>توضیحات</span><textarea id="mfDesc" rows="3" placeholder="توضیح کوتاه دربارهٔ منبع و محتوای دیتاست…"></textarea></div>
+        </section>
+        <section id="ws4" hidden>
+          <h4 class="wt">پردازش و آماده‌سازی داده</h4>
+          <p class="wd">گزارش زندهٔ خط لولهٔ پردازش:</p>
+          <div class="plog" id="plog"></div>
+          <div class="pbar"><i id="pbar"></i></div>
+          <div class="psteps" id="psteps"><b class="on">خواندن</b><b>CRS</b><b>ایندکس</b><b>ذخیره‌سازی</b><b>ساخت لایه</b></div>
+        </section>
+      </div>
+      <div class="wfoot">
+        <button class="btn2" id="wPrev">مرحلهٔ قبل</button>
+        <div style="display:flex;gap:10px"><button class="btn2" id="wCancel">انصراف</button><button class="btn2 main" id="wNext">بازرسی فایل</button></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- معیارهای پذیرش -->
+  <div class="mback" id="mAcc">
+    <div class="modal" role="dialog" aria-modal="true">
+      <div class="mhead"><div style="flex:1"><h3>معیارهای پذیرش MVP</h3><div class="ms">وضعیت هر معیار در این نمونهٔ نمایشی</div></div><button class="ibtn" id="accClose"></button></div>
+      <div class="mbody" id="accBody"></div>
+    </div>
+  </div>
+
+  <!-- راهنما -->
+  <div class="mback" id="mHelp">
+    <div class="modal" role="dialog" aria-modal="true">
+      <div class="mhead"><div style="flex:1"><h3>راهنما و سناریوی نمایش</h3><div class="ms">نحوهٔ استفاده از سامانه و زنجیرهٔ End-to-End</div></div><button class="ibtn" id="helpClose"></button></div>
+      <div class="mbody" id="helpBody"></div>
+    </div>
+  </div>
+
+  <noscript><div style="padding:40px;text-align:center">برای اجرای این سامانه، جاوااسکریپت باید در مرورگر فعال باشد.</div></noscript>
+</div><!-- /demoApp -->
+
+<!-- ═══════════════════════════════════════════
+     اسکریپت ۱: ارائه (اسلایدها)
+     ═══════════════════════════════════════════ -->
 <script>
 const slides=[...document.querySelectorAll('.slide')],
       dotsWrap=document.getElementById('dots'),
@@ -932,8 +1576,13 @@ slides.forEach(s=>s.addEventListener('dblclick',e=>{
   toggleFS();
 }));
 
+/* ───── دموی تعاملی ───── */
+var demoLaunchBtn=document.getElementById('demoLaunch');
+if(demoLaunchBtn)demoLaunchBtn.onclick=function(e){e.stopPropagation();window.__demoOpen&&window.__demoOpen();};
+
 /* ───── کیبورد و لمس ───── */
 addEventListener('keydown',e=>{
+  if(document.body.classList.contains('demoMode'))return; /* در حالت دمو، خود دمو کلیدها را مدیریت می‌کند */
   if(e.key==='Escape'&&document.body.classList.contains('fs')){exitFS();return;}
   if(['ArrowLeft','PageDown','Enter'].includes(e.key)||e.code==='Space'){
     e.preventDefault();
@@ -949,11 +1598,504 @@ addEventListener('keydown',e=>{
 let tx=0,ty=0;
 addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY;},{passive:true});
 addEventListener('touchend',e=>{
+  if(document.body.classList.contains('demoMode'))return;
   const dx=e.changedTouches[0].clientX-tx, dy=e.changedTouches[0].clientY-ty;
   if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5){dx<0?go(cur+1):go(cur-1);}
 },{passive:true});
 
 go((parseInt(location.hash.slice(1))||1)-1);
+</script>
+
+<!-- ═══════════════════════════════════════════
+     اسکریپت ۲: اپلیکیشن دمو (Soufar MVP)
+     ═══════════════════════════════════════════ -->
+<script>
+(function(){
+'use strict';
+var $=function(id){return document.getElementById(id)};
+var boot=$('boot');
+window.addEventListener('error',function(){boot.classList.add('off')},{once:true});
+setTimeout(function(){boot.classList.add('off')},2800);
+boot.addEventListener('click',function(){boot.classList.add('off')});
+
+/* ---------- آیکن‌ها ---------- */
+var IC={eye:'M1.5 8s2.5-4.5 6.5-4.5S14.5 8 14.5 8 12 12.5 8 12.5 1.5 8 1.5 8Zm6.5 2a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z',eyeoff:'M2 2l12 12M5 5.2C3.2 6.4 1.5 8 1.5 8s2.5 4.5 6.5 4.5c1.3 0 2.5-.4 3.5-1M10 6.2A2 2 0 0 0 6.8 10M14.5 8s-.8 1.4-2.2 2.6',chev:'M4 6l4 4 4-4',grip:'M5 3h.01M5 8h.01M5 13h.01M11 3h.01M11 8h.01M11 13h.01',zin:'M8 3v10M3 8h10',zout:'M3 8h10',fit:'M2 5V2h3M14 5V2h-3M2 11v3h3M14 11v3h-3',box:'M2 3.5h12v9H2zM5.5 6.5h5v3h-5z',x:'M3 3l10 10M13 3L3 13',up:'M8 12V3M4 6l4-3 4 3M2 13h12',info:'M8 14.5A6.5 6.5 0 1 0 8 1.5a6.5 6.5 0 0 0 0 13Zm0-9h.01M8 7.5V11',chk:'M2.5 8.5l3.5 3.5 7-8',target:'M8 14.5A6.5 6.5 0 1 0 8 1.5a6.5 6.5 0 0 0 0 13Zm0-4a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5ZM8 1v2m0 10v2M1 8h2m10 0h2',trash:'M3 5h10M6.5 5V3h3v2M4 5l.7 9h6.6L12 5M6.5 7.5v4m3-4v4',pin:'M8 14.5s5-5.4 5-9A5 5 0 0 0 3 5.5c0 3.6 5 9 5 9Zm0-7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z',layers:'M8 1.5 14.5 5 8 8.5 1.5 5 8 1.5Zm6.5 6.5L8 11.5 1.5 8m13 3.5L8 14.5l-6.5-3',plus:'M8 2v12M2 8h12',file:'M4 1.5h5l3 3v10H4zM9 1.5v3h3',route:'M1.5 12c3.5 0 2.5-7.5 6-7.5s2 5 7 5',poly:'M3 3.5 13 2l1 9-10 1.5z',grid:'M1.5 1.5h13v13h-13zM6 1.5v13M10.5 1.5v13M1.5 6h13M1.5 10.5h13'};
+function ic(n,s,sw){s=s||16;sw=sw||1.7;return '<svg viewBox="0 0 16 16" width="'+s+'" height="'+s+'" fill="none" stroke="currentColor" stroke-width="'+sw+'" stroke-linecap="round" stroke-linejoin="round"><path d="'+IC[n]+'"/></svg>'}
+var inject={panelBtn:['layers',18],pinIco:['pin',13],accIco:['chk',14],helpBtn:['info',16],upIco:['up',15],upIco2:['up',15],addIco:['plus',15],tZin:['zin',17],tZout:['zout',17],tFit:['fit',16],tBox:['box',16],tClr:['x',16],idIco:['info',14],idClose:['x',14],selIco:['box',14],selClose:['x',14],wizClose:['x',15],dropIco:['file',22],accClose:['x',15],helpClose:['x',15]};
+for(var k in inject){var el=$(k);if(el)el.innerHTML=ic(inject[k][0],inject[k][1])}
+
+/* ---------- ساعت ---------- */
+var clk=$('clock');
+function tick(){var d=new Date(),p=function(n){return String(n).padStart(2,'0')};clk.textContent=p(d.getHours())+':'+p(d.getMinutes())+':'+p(d.getSeconds())}
+tick();setInterval(tick,1000);
+
+/* ---------- ابزارهای عمومی ---------- */
+function mul(s){return function(){s|=0;s=s+0x6D2B79F5|0;var t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function hexA(h,a){var n=parseInt(h.slice(1),16);return 'rgba('+(n>>16&255)+','+(n>>8&255)+','+(n&255)+','+a+')'}
+function cl(v){v=Math.max(0,Math.min(255,v));return v|0}
+var KD={point:['POINT','target'],line:['LINE','route'],polygon:['POLYGON','poly'],binraster:['RAST·BIN','grid'],rgbraster:['RAST·RGB','grid']};
+function toast(msg){var t=document.createElement('div');t.className='dtoast';t.innerHTML=ic('chk',15)+'<span>'+msg+'</span>';$('toasts').appendChild(t);setTimeout(function(){t.classList.add('out');setTimeout(function(){t.remove()},350)},3600)}
+function fmtSize(b){return b>1048576?(b/1048576).toFixed(1)+' MB':Math.max(1,Math.round(b/1024))+' KB'}
+
+/* ---------- سیستم مختصات (محلیِ بر پایهٔ UTM 41N) ---------- */
+var ORG={lon:60.25,lat:36.30};
+var KX=111320*Math.cos(ORG.lat*Math.PI/180),KY=110540;
+function ll2xy(lon,lat){return [(lon-ORG.lon)*KX,(lat-ORG.lat)*KY]}
+function xy2ll(x,y){return [ORG.lon+x/KX,ORG.lat+y/KY]}
+var EXT={x0:-6600,y0:-4500,x1:6600,y1:4500};
+var OFF_E=253300,OFF_N=4014700;
+
+/* ---------- تولید دادهٔ نمایشی ---------- */
+function jag(x1,y1,x2,y2,seg,amp,seed){var r=mul(seed),p=[[x1,y1]],i,t;for(i=1;i<seg;i++){t=i/seg;p.push([x1+(x2-x1)*t+(r()-.5)*amp,y1+(y2-y1)*t+(r()-.5)*amp])}p.push([x2,y2]);return p}
+function blob(cx,cy,r,seed,ys){ys=ys||.72;var rnd=mul(seed),p=[],n=26,i,t,rr;for(i=0;i<n;i++){t=i/n*Math.PI*2;rr=r*(.75+rnd()*.45);p.push([cx+Math.cos(t)*rr,cy+Math.sin(t)*rr*ys])}return p}
+function cluster(cx,cy,n,spread,seed){var r=mul(seed),a=[],i;for(i=0;i<n;i++)a.push([cx+(r()+r()+r()-1.5)*spread,cy+(r()+r()+r()-1.5)*spread]);return a}
+function alongLine(pts,n,spread,seed){var r=mul(seed),out=[],m=pts.length-1,i,t,k,f,x,y,dx,dy,len,nx,ny,o;for(i=0;i<n;i++){t=r()*m;k=Math.min(m-1,t|0);f=t-k;x=pts[k][0]+(pts[k+1][0]-pts[k][0])*f;y=pts[k][1]+(pts[k+1][1]-pts[k][1])*f;dx=pts[k+1][0]-pts[k][0];dy=pts[k+1][1]-pts[k][1];len=Math.hypot(dx,dy)||1;nx=-dy/len;ny=dx/len;o=(r()-.5)*spread;out.push([x+nx*o,y+ny*o])}return out}
+function mkfield(cs){return function(u,v){var s=0,i,c,dx,dy;for(i=0;i<cs.length;i++){c=cs[i];dx=u-c[0];dy=v-c[1];s+=c[2]*Math.exp(-(dx*dx+dy*dy)/(2*c[3]*c[3]))}return Math.min(1,s*.9)}}
+function rasterCanvas(gw,gh,fn){var c=document.createElement('canvas');c.width=gw;c.height=gh;var x=c.getContext('2d'),im=x.createImageData(gw,gh),d=im.data,i,j,k,p;for(j=0;j<gh;j++)for(i=0;i<gw;i++){p=fn(i/(gw-1),j/(gh-1),i,j);k=(j*gw+i)*4;d[k]=p[0];d[k+1]=p[1];d[k+2]=p[2];d[k+3]=(p[3]==null?255:p[3])}x.putImageData(im,0,0);return c}
+
+var R=mul(20240604);
+var riverPts=jag(-6000,4300,6300,-4200,16,650,88);
+var roadPts=jag(-6300,-3900,5400,4100,12,420,77);
+var faultFeats=[[-6200,3800,6300,2600,9,1500,11],[-5900,-1300,6100,-3500,8,1500,22],[-1400,4400,300,-4400,7,900,33],[-5300,4300,-1500,-4300,8,1000,44],[2700,4300,3700,-4300,6,700,55]].map(function(a,i){return {g:'line',c:jag.apply(null,a),props:{'نام گسل':'گسل '+(i<2?'اصلی F':'فرعی f')+((i%2)+1+i),'نوع':i<2?'اصلی':'فرعی','طول تقریبی (م)':((Math.hypot(a[2]-a[0],a[3]-a[1])*1.18)|0).toLocaleString('en-US')}}});
+var geoDef=[['توف و توفیت ائوسن','#7a6a55',-3200,1400,2600,1],['آهک کریستالی سنگان (پرکامبرین)','#8d8f7a',2600,-1500,2300,2],['اسکیست و شیست سبز','#5f7263',-800,-2700,1800,3],['گابرو و دیوریت','#5c6470',3600,2300,1400,4],['مونزونیت پورفیری (میزبان کانه)','#8a7057',200,300,3100,5]];
+var geoFeats=geoDef.map(function(d){return {g:'poly',c:blob(d[2],d[3],d[4],100+d[5]),props:{'واحد سنگ‌شناسی':d[0],'کد واحد':'U'+(100+d[5]),'سن':'—'}}});
+var altFeats=[[1500,-600,950,11,'آرژیلیک (رس‌شدگی)'],[-1500,1800,750,12,'پروپیلیتیک'],[500,1000,520,13,'سیلیسیفیسیون']].map(function(a){return {g:'poly',c:blob(a[0],a[1],a[2],a[3]),props:{'نوع دگرسانی':a[4]}}});
+var licFeats=[{g:'poly',c:blob(-150,100,5900,99,.62),props:{'شمارهٔ پروانه':'۲/۸۴۵۶۱','نوع پروانه':'اکتشافی'}}];
+var bhFeats=[],bi=0;
+[[1500,-900,26,510],[2600,300,20,522],[-1600,1700,14,533]].forEach(function(cl){cluster(cl[0],cl[1],cl[2],700,cl[3]).forEach(function(p){bi++;bhFeats.push({g:'point',c:p,props:{'کد گمانه':'SGH-'+String(bi).padStart(3,'0'),'عمق (م)':(60+R()*320)|0,'عیار Fe (%)':(18+R()*44).toFixed(1),'وضعیت':R()>.25?'تکمیل‌شده':'در حال اجرا'}})})});
+var ssFeats=alongLine(riverPts,140,520,444).map(function(p,i){return {g:'point',c:p,props:{'کد نمونه':'SSS-'+String(i+1).padStart(3,'0'),'Cu (ppm)':(12+R()*180)|0,'Zn (ppm)':(30+R()*220)|0,'Pb (ppm)':(5+R()*95)|0}}});
+var GW=112,GH=78;
+var fP=mkfield([[.28,.35,1,.2],[.72,.6,.9,.17],[.55,.14,.6,.13],[.1,.75,.5,.15]]);
+var fA=mkfield([[.3,.35,1,.22],[.72,.62,.9,.18],[.55,.15,.6,.14]]);
+var fB=mkfield([[.6,.7,.8,.2],[.15,.55,.7,.16]]);
+var nz=mul(777);
+var binVals=new Uint8Array(GW*GH);
+var binCanvas=rasterCanvas(GW,GH,function(u,v,i,j){var t=fP(u,v)>.42?1:0;binVals[j*GW+i]=t;return [87,199,212,t?135:0]});
+var rgbPix=new Uint8ClampedArray(GW*GH*3);
+var rgbCanvas=rasterCanvas(GW,GH,function(u,v,i,j){var a=fA(u,v),b=fB(u,v),n=(nz()-.5)*26,r=cl(50+a*195+n),g=cl(48+a*70+b*135+n),bl=cl(58+b*95+(1-a)*30+n),k=(j*GW+i)*3;rgbPix[k]=r;rgbPix[k+1]=g;rgbPix[k+2]=bl;return [r,g,bl,255]});
+
+function mkLayer(id,name,kind,feats,style,meta,canvas,vals,gw,gh){return {id:id,name:name,kind:kind,feats:feats,style:style||{},meta:meta,visible:true,opacity:1,open:false,canvas:canvas,vals:vals,gw:gw,gh:gh,sel:null}}
+var layers=[
+ mkLayer('bh','گمانه‌های اکتشافی','point',bhFeats,{color:'#F2C078',shape:'circle',r:4.5},{src:'گزارش اکتشاف فاز ۱',date:'1404/04/12',fmt:'Shapefile (Point)',size:'318 KB',epsg:'EPSG:32641'}),
+ mkLayer('ss','نمونه‌های ژئوشیمی رسوبات آبراهه‌ای','point',ssFeats,{color:'#8CAF6B',shape:'square',r:4},{src:'کمپین نمونه‌برداری ۱۴۰۳',date:'1404/02/19',fmt:'GeoJSON (Point)',size:'96 KB',epsg:'EPSG:4326 → 32641'}),
+ mkLayer('flt','گسل‌های اصلی و فرعی','line',faultFeats,{color:'#E0654A',w:1.7,dash:[7,5]},{src:'نقشهٔ زمین‌شناسی ۱:۲۵,۰۰۰',date:'1403/11/03',fmt:'DXF → GeoJSON',size:'1.1 MB',epsg:'EPSG:32641'}),
+ mkLayer('alt','مناطق دگرسانی','polygon',altFeats,{color:'#C06B4A',fillA:.4,w:1.2},{src:'تفسیر تصاویر ماهواره‌ای',date:'1404/01/28',fmt:'Shapefile (Polygon)',size:'410 KB',epsg:'EPSG:32641'}),
+ mkLayer('bin','نقشهٔ پتانسیل معدنی (بولی)','binraster',null,{color:'#57C7D4'},{src:'پردازش شواهد چندلایه — ISDS',date:'1404/05/02',fmt:'GeoTIFF (1-bit)',size:'2.4 MB',epsg:'EPSG:32641'},binCanvas,binVals,GW,GH),
+ mkLayer('rgb','تصویر ماهواره‌ای ASTER — رنگ کاذب','rgbraster',null,{},{src:'ASTER L1T — NASA/EOS',date:'1403/08/24',fmt:'GeoTIFF (RGB)',size:'18.6 MB',epsg:'EPSG:32641'},rgbCanvas,rgbPix,GW,GH),
+ mkLayer('geo','واحدهای سنگ‌شناسی','polygon',geoFeats,{color:'#8a8560',fillA:.5,w:1.2},{src:'سازمان زمین‌شناسی کشور',date:'1398/05/15',fmt:'Shapefile (Polygon)',size:'4.2 MB',epsg:'EPSG:32641'}),
+ mkLayer('riv','آبراهه‌های فصلی','line',[{g:'line',c:riverPts,props:{'نام':'آبراههٔ اصلی شمالی'}}],{color:'#57C7D4',w:1.8},{src:'استخراج از DEM ۱۲.۵m',date:'1404/01/20',fmt:'GeoJSON (Line)',size:'214 KB',epsg:'EPSG:32641'}),
+ mkLayer('road','جادهٔ دسترسی محوطه','line',[{g:'line',c:roadPts,props:{'نوع':'جادهٔ شوسه','طول (م)':'12,000'}}],{color:'#C8BCA1',w:1.5},{src:'نقشهٔ زیرساخت محوطه',date:'1403/12/01',fmt:'GeoJSON (Line)',size:'48 KB',epsg:'EPSG:32641'}),
+ mkLayer('lic','حدود محوطهٔ اکتشافی (پروانه)','polygon',licFeats,{color:'#E8A33D',fillA:.05,w:2},{src:'ادارهٔ کل صنعت، معدن و تجارت',date:'1394/07/22',fmt:'Shapefile (Polygon)',size:'12 KB',epsg:'EPSG:32641'})
+];
+layers.forEach(function(l){if(l.id==='rgb')l.opacity=.7;if(l.id==='bin')l.opacity=.55});
+
+var datasets=layers.map(function(l){return {id:'ds_'+l.id,label:l.name,kind:l.kind,count:l.feats?l.feats.length:GW*GH,size:l.meta.size,date:l.meta.date,published:true,layerId:l.id,feats:l.feats}});
+var queue=[
+ {id:'qq1',status:'queue',label:'ژئوشیمی رسوبات آبراهه‌ای — کمپین ۱۴۰۴',file:'sangan_streamsed_1404.geojson',kind:'point',count:150,size:'1.9 MB',date:'1404/06/02',
+  gen:function(){return alongLine(riverPts,150,650,909).map(function(p,i){var r=mul(4000+i);return {g:'point',c:p,props:{'کد نمونه':'SS4-'+String(i+1).padStart(3,'0'),'Cu (ppm)':(12+r()*190)|0,'Zn (ppm)':(28+r()*240)|0,'Pb (ppm)':(4+r()*110)|0,'Sn (ppm)':(1+r()*14)|0}}})}},
+ {id:'qq2',status:'queue',label:'گسل‌های برگردان‌شده از نقشهٔ تکتونیکی',file:'sangan_tect_faults.geojson',kind:'line',count:6,size:'740 KB',date:'1404/06/05',
+  gen:function(){return [[-5400,4100,5600,3300,8,1300,61],[-4900,-900,5700,-2600,7,1200,62],[-300,4200,-900,-4300,6,800,63],[3600,4200,4300,-4200,6,750,64],[-5500,3400,-3600,-3900,7,900,65],[1000,4300,1900,-4100,6,700,66]].map(function(a,i){return {g:'line',c:jag.apply(null,a),props:{'کد گسل':'TF-'+(i+1),'ماهیت':'برشی','طول تقریبی (م)':((Math.hypot(a[2]-a[0],a[3]-a[1])*1.15)|0).toLocaleString('en-US')}}})}},
+ {id:'qq3',status:'queue',label:'بلوک‌های اکتشافی فاز ۲',file:'blocks_phase2.geojson',kind:'polygon',count:4,size:'86 KB',date:'1404/06/08',
+  gen:function(){return [[3900,-2600,900,71],[-4200,-2900,1050,72],[300,-3900,760,73],[-4400,3300,880,74]].map(function(a,i){return {g:'poly',c:blob(a[0],a[1],a[2],a[3],.8),props:{'کد بلوک':'B2-'+String(i+1).padStart(2,'0'),'اولویت':['بالا','متوسط','بالا','پایین'][i]}}})}}
+];
+datasets.push.apply(datasets,queue);
+
+/* ---------- موتور نقشه ---------- */
+var cv=$('map'),ctx=cv.getContext('2d'),stage=$('stage');
+var W=100,H=100;
+var cam={x:0,y:0,s:.05};
+function SX(x){return (x-cam.x)*cam.s+W/2}
+function SY(y){return H/2-(y-cam.y)*cam.s}
+function WX(sx){return (sx-W/2)/cam.s+cam.x}
+function WY(sy){return (H/2-sy)/cam.s+cam.y}
+function resize(){var r=stage.getBoundingClientRect();W=r.width;H=r.height;var d=window.devicePixelRatio||1;cv.width=Math.max(1,W*d);cv.height=Math.max(1,H*d);cv.style.width=W+'px';cv.style.height=H+'px';ctx.setTransform(d,0,0,d,0,0);need()}
+var raf=0;
+function need(){if(!raf)raf=requestAnimationFrame(function(){raf=0;draw();updSB()})}
+function nice(t){var p=Math.pow(10,Math.floor(Math.log10(t))),m=t/p;return (m<1.5?1:m<3.5?2:m<7.5?5:10)*p}
+function drawGrat(){ctx.strokeStyle='rgba(120,108,84,.14)';ctx.fillStyle='rgba(148,137,111,.5)';ctx.font='9px IBM Plex Mono,Consolas,monospace';ctx.lineWidth=1;
+ var stepD=nice((W/cam.s)/KX/5),g=0,i,lon,lat;
+ var l0=ORG.lon+WX(0)/KX,l1=ORG.lon+WX(W)/KX;
+ for(lon=Math.ceil(l0/stepD)*stepD;lon<=l1&&g<60;lon+=stepD,g++){var x=SX((lon-ORG.lon)*KX);ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();ctx.textAlign='center';ctx.fillText(lon.toFixed(stepD<0.01?3:2)+'°E',x,11)}
+ g=0;var b0=ORG.lat+WY(H)/KY,b1=ORG.lat+WY(0)/KY;
+ for(lat=Math.ceil(b0/stepD)*stepD;lat<=b1&&g<60;lat+=stepD,g++){var y=SY((lat-ORG.lat)*KY);ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();ctx.textAlign='left';ctx.fillText(lat.toFixed(stepD<0.01?3:2)+'°N',6,y-4)}}
+function drawLayer(l){
+ if(l.kind==='rgbraster'||l.kind==='binraster'){ctx.globalAlpha=l.opacity;ctx.drawImage(l.canvas,SX(EXT.x0),SY(EXT.y1),(EXT.x1-EXT.x0)*cam.s,(EXT.y1-EXT.y0)*cam.s);ctx.globalAlpha=1;return}
+ var i,f,x,y,j,p;
+ if(l.kind==='polygon'){ctx.lineWidth=l.style.w||1.2;ctx.setLineDash(l.style.dash||[]);ctx.strokeStyle=hexA(l.style.line||l.style.color||'#888',l.opacity);ctx.fillStyle=hexA(l.style.color||'#888',l.opacity*(l.style.fillA!=null?l.style.fillA:.55));
+  for(i=0;i<l.feats.length;i++){f=l.feats[i];ctx.beginPath();for(j=0;j<f.c.length;j++){p=f.c[j];if(j)ctx.lineTo(SX(p[0]),SY(p[1]));else ctx.moveTo(SX(p[0]),SY(p[1]))}ctx.closePath();ctx.fill();ctx.stroke()}
+  ctx.setLineDash([]);return}
+ if(l.kind==='line'){ctx.lineWidth=l.style.w||1.6;ctx.setLineDash(l.style.dash||[]);ctx.strokeStyle=hexA(l.style.color||'#888',l.opacity);
+  for(i=0;i<l.feats.length;i++){f=l.feats[i];ctx.beginPath();for(j=0;j<f.c.length;j++){p=f.c[j];if(j)ctx.lineTo(SX(p[0]),SY(p[1]));else ctx.moveTo(SX(p[0]),SY(p[1]))}ctx.stroke()}
+  ctx.setLineDash([]);return}
+ var r=l.style.r||4.5;ctx.fillStyle=hexA(l.style.color||'#F2C078',l.opacity);ctx.strokeStyle='rgba(20,16,10,.9)';ctx.lineWidth=1;
+ for(i=0;i<l.feats.length;i++){f=l.feats[i];x=SX(f.c[0]);y=SY(f.c[1]);if(x<-20||x>W+20||y<-20||y>H+20)continue;
+  if(l.style.shape==='square'){ctx.fillRect(x-r,y-r,2*r,2*r);ctx.strokeRect(x-r,y-r,2*r,2*r)}
+  else{ctx.beginPath();ctx.arc(x,y,r,0,7);ctx.fill();ctx.stroke()}}}
+function drawSel(){
+ if(drag&&drag.mode==='box'){var bx=Math.min(drag.x0,drag.x1),by=Math.min(drag.y0,drag.y1),bw=Math.abs(drag.x1-drag.x0),bh=Math.abs(drag.y1-drag.y0);
+  ctx.fillStyle='rgba(232,163,61,.08)';ctx.strokeStyle='#E8A33D';ctx.setLineDash([6,4]);ctx.lineWidth=1.5;ctx.fillRect(bx,by,bw,bh);ctx.strokeRect(bx,by,bw,bh);ctx.setLineDash([])}
+ if(selBox){ctx.strokeStyle='#E8A33D';ctx.setLineDash([6,4]);ctx.lineWidth=1.5;ctx.fillStyle='rgba(232,163,61,.07)';
+  var x=SX(selBox[0]),y=SY(selBox[3]),w=(selBox[2]-selBox[0])*cam.s,h=(selBox[3]-selBox[1])*cam.s;ctx.fillRect(x,y,w,h);ctx.strokeRect(x,y,w,h);ctx.setLineDash([])}
+ layers.forEach(function(l){if(!l.sel||!l.sel.size||!l.visible||!l.feats)return;
+  ctx.strokeStyle='rgba(242,192,120,.95)';ctx.lineWidth=2;
+  l.feats.forEach(function(f,i){if(!l.sel.has(i))return;var j,p;
+   if(f.g==='point'){ctx.beginPath();ctx.arc(SX(f.c[0]),SY(f.c[1]),(l.style.r||4.5)+4,0,7);ctx.stroke()}
+   else{ctx.beginPath();for(j=0;j<f.c.length;j++){p=f.c[j];if(j)ctx.lineTo(SX(p[0]),SY(p[1]));else ctx.moveTo(SX(p[0]),SY(p[1]))}if(f.g==='poly')ctx.closePath();ctx.stroke()}})})}
+function draw(){ctx.clearRect(0,0,W,H);ctx.fillStyle='#151310';ctx.fillRect(0,0,W,H);drawGrat();
+ var i;for(i=layers.length-1;i>=0;i--){if(layers[i].visible)drawLayer(layers[i])}
+ drawSel()}
+function updSB(){$('sbZoom').textContent='scale '+cam.s.toFixed(3)+' px/m';
+ var m=nice(110/cam.s),px=m*cam.s;$('sbBar').style.width=Math.round(px)+'px';
+ $('sbScaleTxt').textContent=m>=1000?(m/1000)+' km':m+' m';
+ $('sbRatio').textContent='1:'+Math.round((1/cam.s)/0.0002646).toLocaleString('en-US')}
+function updCoords(p){var wx=WX(p.x),wy=WY(p.y);
+ $('sbEN').textContent='E '+(OFF_E+wx).toFixed(0)+' m · N '+(OFF_N+wy).toFixed(0)+' m';
+ var ll=xy2ll(wx,wy);$('sbLL').textContent=ll[1].toFixed(4)+'°N '+ll[0].toFixed(4)+'°E'}
+function bboxOf(l){if(!l.feats)return [EXT.x0,EXT.y0,EXT.x1,EXT.y1];
+ var b=[1e9,1e9,-1e9,-1e9];function ex(x,y){if(x<b[0])b[0]=x;if(y<b[1])b[1]=y;if(x>b[2])b[2]=x;if(y>b[3])b[3]=y}
+ l.feats.forEach(function(f){if(f.g==='point')ex(f.c[0],f.c[1]);else f.c.forEach(function(p){ex(p[0],p[1])})});return b}
+function featBBox(f){if(f.g==='point')return [f.c[0]-250,f.c[1]-250,f.c[0]+250,f.c[1]+250];
+ var b=[1e9,1e9,-1e9,-1e9];f.c.forEach(function(p){if(p[0]<b[0])b[0]=p[0];if(p[1]<b[1])b[1]=p[1];if(p[0]>b[2])b[2]=p[0];if(p[1]>b[3])b[3]=p[1]});return b}
+function fitTo(b,pad){pad=pad==null?.15:pad;var bw=Math.max(b[2]-b[0],50),bh=Math.max(b[3]-b[1],50);
+ cam.s=Math.min(W/(bw*(1+pad*2)),H/(bh*(1+pad*2)));cam.s=Math.min(40,Math.max(.004,cam.s));
+ cam.x=(b[0]+b[2])/2;cam.y=(b[1]+b[3])/2;need()}
+function zoomAt(px,py,f){var wx=WX(px),wy=WY(py);cam.s=Math.min(40,Math.max(.004,cam.s*f));cam.x=wx-(px-W/2)/cam.s;cam.y=wy+(py-H/2)/cam.s;need()}
+
+/* ---------- انتخاب و Identify ---------- */
+function pip(pt,poly){var x=pt[0],y=pt[1],c=false,i,j,xi,yi,xj,yj;
+ for(i=0,j=poly.length-1;i<poly.length;j=i++){xi=poly[i][0];yi=poly[i][1];xj=poly[j][0];yj=poly[j][1];
+  if(((yi>y)!=(yj>y))&&(x<(xj-xi)*(y-yi)/(yj-yi)+xi))c=!c}return c}
+function d2seg(px,py,ax,ay,bx,by){var dx=bx-ax,dy=by-ay,L=dx*dx+dy*dy,t;
+ t=L?((px-ax)*dx+(py-ay)*dy)/L:0;t=Math.max(0,Math.min(1,t));
+ var X=ax+t*dx,Y=ay+t*dy;return (px-X)*(px-X)+(py-Y)*(py-Y)}
+function pickVec(p){var wx=WX(p.x),wy=WY(p.y),i,l,f,k,th;
+ for(i=0;i<layers.length;i++){l=layers[i];if(!l.visible||!l.feats)continue;
+  th=(l.kind==='point'?9:7)/cam.s;
+  for(k=0;k<l.feats.length;k++){f=l.feats[k];
+   if(f.g==='point'){if(Math.hypot(wx-f.c[0],wy-f.c[1])<th)return {l:l,f:f}}
+   else if(f.g==='line'){var q;for(q=1;q<f.c.length;q++){if(d2seg(wx,wy,f.c[q-1][0],f.c[q-1][1],f.c[q][0],f.c[q][1])<th*th)return {l:l,f:f}}}
+   else{if(pip([wx,wy],f.c))return {l:l,f:f}}}}
+ return null}
+function pickRast(p){var wx=WX(p.x),wy=WY(p.y),i,l;
+ for(i=0;i<layers.length;i++){l=layers[i];if(!l.visible)continue;
+  if((l.kind==='binraster'||l.kind==='rgbraster')&&wx>=EXT.x0&&wx<=EXT.x1&&wy>=EXT.y0&&wy<=EXT.y1)return {l:l,wx:wx,wy:wy}}
+ return null}
+function hover(p){var hit=pickVec(p);cv.classList.toggle('hov',!!hit);var tt=$('tooltip');
+ if(hit){tt.hidden=false;var t1=(hit.f.props&&Object.keys(hit.f.props).length)?Object.values(hit.f.props)[0]:'—';
+  tt.firstElementChild.textContent=String(t1);tt.children[1].textContent=hit.l.name;
+  tt.style.left=Math.min(p.x+16,W-240)+'px';tt.style.top=Math.min(p.y+16,H-70)+'px'}
+ else tt.hidden=true}
+function identify(p){var v=pickVec(p),panel=$('identify');
+ if(v){var l=v.l,f=v.f,rows=Object.entries(f.props||{}).slice(0,9).map(function(e){return '<div class="irow"><span class="k">'+e[0]+'</span><span class="v">'+String(e[1])+'</span></div>'}).join('');
+  $('idBody').innerHTML='<div class="irow"><span class="k">لایه</span><span class="v">'+l.name+'</span></div>'+rows+'<div class="irow"><span class="k">نوع هندسه</span><span class="v">'+({point:'Point',line:'LineString',poly:'Polygon'})[f.g]+'</span></div>';
+  $('idBtns').innerHTML='<button class="sbtn" id="idfZoom">زوم به عارضه</button>';
+  $('idfZoom').onclick=function(){fitTo(featBBox(f),.6);panel.hidden=true};
+  panel.hidden=false;return}
+ var r=pickRast(p);
+ if(r){var l=r.l,u=(r.wx-EXT.x0)/(EXT.x1-EXT.x0),vv=(r.wy-EXT.y0)/(EXT.y1-EXT.y0);
+  var i=Math.min(l.gw-1,Math.max(0,Math.floor(u*l.gw))),j=Math.min(l.gh-1,Math.max(0,Math.floor(vv*l.gh))),rows2;
+  if(l.kind==='binraster'){rows2=[['مقدار سلول',l.vals[j*l.gw+i]?'۱ — مستعد':'۰ — نامستعد'],['ابعاد شبکه',l.gw+' × '+l.gh+' سلول']]}
+  else{var k=(j*l.gw+i)*3;rows2=[['R (باند قرمز)',l.vals[k]],['G (باند سبز)',l.vals[k+1]],['B (باند آبی)',l.vals[k+2]],['ابعاد شبکه',l.gw+' × '+l.gh+' سلول']]}
+  $('idBody').innerHTML='<div class="irow"><span class="k">لایه</span><span class="v">'+l.name+'</span></div>'+rows2.map(function(e){return '<div class="irow"><span class="k">'+e[0]+'</span><span class="v">'+e[1]+'</span></div>'}).join('');
+  $('idBtns').innerHTML='';panel.hidden=false;return}
+ panel.hidden=true}
+
+/* ---------- رویدادهای نقشه ---------- */
+var drag=null,boxMode=false,selBox=null;
+function pos(e){var r=cv.getBoundingClientRect();return {x:e.clientX-r.left,y:e.clientY-r.top}}
+cv.addEventListener('pointerdown',function(e){cv.setPointerCapture(e.pointerId);var p=pos(e);
+ if(boxMode)drag={mode:'box',x0:p.x,y0:p.y,x1:p.x,y1:p.y};
+ else{drag={mode:'pan',x0:p.x,y0:p.y,cx:cam.x,cy:cam.y,moved:false};cv.classList.add('dragging')}});
+cv.addEventListener('pointermove',function(e){var p=pos(e);updCoords(p);
+ if(!drag){hover(p);return}
+ if(drag.mode==='pan'){var dx=p.x-drag.x0,dy=p.y-drag.y0;if(Math.abs(dx)+Math.abs(dy)>3)drag.moved=true;
+  cam.x=drag.cx-dx/cam.s;cam.y=drag.cy+dy/cam.s;need()}
+ else{drag.x1=p.x;drag.y1=p.y;need()}});
+cv.addEventListener('pointerup',function(e){var p=pos(e);
+ if(drag&&drag.mode==='box')finishBox(drag);
+ else if(drag&&!drag.moved)identify(p);
+ cv.classList.remove('dragging');drag=null});
+cv.addEventListener('pointerleave',function(){$('tooltip').hidden=true});
+cv.addEventListener('wheel',function(e){e.preventDefault();var p=pos(e);zoomAt(p.x,p.y,Math.exp(-e.deltaY*.0016))},{passive:false});
+cv.addEventListener('dblclick',function(e){var p=pos(e);zoomAt(p.x,p.y,1.7)});
+function finishBox(d){var x0=Math.min(d.x0,d.x1),x1=Math.max(d.x0,d.x1),y0=Math.min(d.y0,d.y1),y1=Math.max(d.y0,d.y1);
+ if(x1-x0<6&&y1-y0<6)return;
+ var wx0=WX(x0),wx1=WX(x1),wy0=WY(y1),wy1=WY(y0);selBox=[wx0,wy0,wx1,wy1];
+ var inside=function(x,y){return x>=wx0&&x<=wx1&&y>=wy0&&y<=wy1},html='',tot=0;
+ function row(l,n){return '<div class="sr"><span>'+l.name+' <span class="lbadge">'+KD[l.kind][0]+'</span></span><b>'+n+'</b></div>'}
+ layers.forEach(function(l){if(!l.visible)return;
+  if(l.feats){var s=new Set();
+   l.feats.forEach(function(f,i){
+    if(f.g==='point'){if(inside(f.c[0],f.c[1]))s.add(i)}
+    else{var cx=0,cy=0,n=f.c.length,any=false,q;for(q=0;q<n;q++){if(inside(f.c[q][0],f.c[q][1]))any=true;cx+=f.c[q][0];cy+=f.c[q][1]}
+     if(f.g==='line'){if(any)s.add(i)}else{if(inside(cx/n,cy/n))s.add(i)}}});
+   if(s.size){l.sel=s;tot+=s.size;html+=row(l,s.size)}}
+  else{var c=0,i,j;for(j=0;j<l.gh;j++)for(i=0;i<l.gw;i++){
+    if(inside(EXT.x0+(i+.5)/l.gw*(EXT.x1-EXT.x0),EXT.y0+(j+.5)/l.gh*(EXT.y1-EXT.y0)))c++}
+   if(c){tot+=c;html+=row(l,c)}}});
+ $('selBody').innerHTML=html?'<div class="sr" style="color:var(--ink)"><span>مجموع عوارض/سلول‌های انتخابی</span><b>'+tot+'</b></div>'+html:'<div class="dim" style="font-size:12px;padding:4px 0">هیچ عارضه‌ای در این محدوده یافت نشد.</div>';
+ $('selPanel').hidden=false;need()}
+function clearSel(){selBox=null;layers.forEach(function(l){l.sel=null});$('selPanel').hidden=true;need()}
+function setBox(on){boxMode=on;$('tBox').classList.toggle('on',on);cv.classList.toggle('selmode',on);if(!on&&drag&&drag.mode==='box')drag=null;need()}
+
+/* ---------- پنل لایه‌ها ---------- */
+var layerList=$('layerList'),dragIdx=-1;
+function legendHTML(l){
+ var c=l.style.color||'#57C7D4';
+ if(l.kind==='binraster')return '<div class="lgradrow"><span>۰ نامستعد</span><span>۱ مستعد</span></div><div class="lgrad" style="background:linear-gradient(90deg,transparent,'+c+')"></div>';
+ if(l.kind==='rgbraster')return '<div class="lgradrow"><span>Band R</span><span>Band G</span><span>Band B</span></div><div class="lgrad" style="background:linear-gradient(90deg,#c25549,#7fb069,#4a7fb5)"></div>';
+ if(l.kind==='point')return '<div class="lswrow"><span><i class="dsw" style="background:'+c+'"></i>'+(l.style.shape==='square'?'مربع':'دایره')+'</span><span class="dim">'+l.feats.length+' عارضه</span></div>';
+ if(l.kind==='line')return '<div class="lswrow"><span><i style="display:inline-block;width:22px;border-top:2.5px solid '+c+'"></i>خط</span><span class="dim">'+l.feats.length+' عارضه</span></div>';
+ return '<div class="lswrow"><span><i class="dsw" style="background:'+hexA(c,.45)+';border:1px solid '+c+'"></i>پلی‌گون</span><span class="dim">'+l.feats.length+' عارضه</span></div>'}
+function renderLayers(){
+ $('layCount').textContent='('+layers.length+')';
+ layerList.innerHTML='';
+ layers.forEach(function(l,idx){
+  var w=document.createElement('div');
+  w.className='lwrap'+(l.open?' open':'')+(l.visible?'':' off');
+  w.innerHTML='<div class="lrow">'+
+   '<span class="grip" title="جابه‌جایی برای تغییر ترتیب نمایش">'+ic('grip',14)+'</span>'+
+   '<button class="eye'+(l.visible?' on':'')+'" title="نمایش/پنهان">'+ic(l.visible?'eye':'eyeoff',15)+'</button>'+
+   '<div class="lmain"><div class="ltop"><span class="lname">'+l.name+'</span><span class="lbadge">'+KD[l.kind][0]+'</span></div>'+
+   '<div class="lsub">'+l.meta.fmt+' · '+l.meta.size+'</div></div>'+
+   '<span class="lsw"><i class="dsw" style="background:'+hexA(l.style.color||'#57C7D4',.95)+'"></i></span>'+
+   '<span class="chev">'+ic('chev',14)+'</span></div>'+
+   '<div class="lexp"><div><div class="in">'+
+    '<div class="frow"><span>شفافیت لایه</span><input type="range" min="0" max="100" value="'+Math.round(l.opacity*100)+'"></div>'+
+    '<div class="dlegend">'+legendHTML(l)+'</div>'+
+    '<div class="mrow"><span>منبع داده</span><b>'+l.meta.src+'</b></div>'+
+    '<div class="mrow"><span>تاریخ ثبت</span><b>'+l.meta.date+'</b></div>'+
+    '<div class="mrow"><span>سیستم مختصات</span><b class="mono">'+l.meta.epsg+'</b></div>'+
+    '<div class="lbtns"><button class="sbtn" data-act="zoom">زوم به لایه</button><button class="sbtn" data-act="top">آوردن رو</button></div>'+
+   '</div></div></div>';
+  w.querySelector('.lrow').addEventListener('click',function(e){
+   if(e.target.closest('.eye')||e.target.closest('.grip'))return;
+   l.open=!l.open;w.classList.toggle('open',l.open)});
+  var eye=w.querySelector('.eye');
+  eye.addEventListener('click',function(e){e.stopPropagation();l.visible=!l.visible;
+   w.classList.toggle('off',!l.visible);this.classList.toggle('on',l.visible);
+   this.innerHTML=ic(l.visible?'eye':'eyeoff',15);need()});
+  var rng=w.querySelector('input[type=range]');
+  rng.addEventListener('click',function(e){e.stopPropagation()});
+  rng.addEventListener('input',function(){l.opacity=this.value/100;need()});
+  w.querySelector('[data-act=zoom]').addEventListener('click',function(e){e.stopPropagation();fitTo(bboxOf(l),.2)});
+  w.querySelector('[data-act=top]').addEventListener('click',function(e){e.stopPropagation();
+   var i=layers.indexOf(l);if(i>0){layers.splice(i,1);layers.unshift(l);renderLayers();need()}});
+  w.querySelector('.grip').addEventListener('pointerdown',function(e){e.stopPropagation();e.preventDefault();dragIdx=idx});
+  layerList.appendChild(w);
+ });
+}
+document.addEventListener('pointermove',function(e){
+ if(dragIdx<0)return;
+ var el=document.elementFromPoint(e.clientX,e.clientY);if(!el)return;
+ var t=el.closest('.lwrap');if(!t||!layerList.contains(t))return;
+ var ni=Array.prototype.indexOf.call(layerList.children,t);
+ if(ni>-1&&ni!==dragIdx){var mv=layers.splice(dragIdx,1)[0];layers.splice(ni,0,mv);dragIdx=ni;renderLayers();need()}
+});
+document.addEventListener('pointerup',function(){dragIdx=-1});
+
+/* ---------- تب‌ها، مخزن داده و ابزارها ---------- */
+var tabBtns=document.querySelectorAll('#demoApp .tab');
+tabBtns.forEach(function(t){t.addEventListener('click',function(){
+ tabBtns.forEach(function(x){x.classList.remove('on')});t.classList.add('on');
+ var isL=t.getAttribute('data-t')==='layers';
+ $('tc-layers').hidden=!isL;$('tc-repo').hidden=isL;
+})});
+function renderRepo(){
+ $('stDS').textContent=datasets.length;
+ $('stLY').textContent=layers.length;
+ var ft=0;layers.forEach(function(l){ft+=l.feats?l.feats.length:l.gw*l.gh});
+ $('stFT').textContent=ft.toLocaleString('en-US');
+ var dl=$('dsList');dl.innerHTML='';
+ datasets.forEach(function(d){
+  var row=document.createElement('div');row.className='drow';
+  var ico=d.status==='queue'?'file':(KD[d.kind]?KD[d.kind][1]:'file');
+  row.innerHTML='<span class="dic">'+ic(ico,16)+'</span>'+
+   '<div style="flex:1;min-width:0"><div class="dn">'+d.label+'</div>'+
+   '<div class="dm">'+(d.status==='queue'?'در صف ورود · ':'')+(KD[d.kind]?KD[d.kind][0]:d.kind)+' · '+d.count.toLocaleString('en-US')+' · '+d.size+' · '+d.date+'</div></div>'+
+   '<button class="sbtn">'+(d.status==='queue'?'ورود':'نمایش')+'</button>';
+  row.querySelector('.sbtn').onclick=function(){
+   if(d.status==='queue'){wizOpenF(d.id)}
+   else{var l=null;layers.forEach(function(x){if(x.id===d.layerId)l=x});
+    if(l){l.visible=true;renderLayers();fitTo(bboxOf(l),.2);toast('لایه «'+l.name+'» نمایش داده شد')}}};
+  dl.appendChild(row);
+ });
+}
+ $('tZin').onclick=function(){zoomAt(W/2,H/2,1.6)};
+ $('tZout').onclick=function(){zoomAt(W/2,H/2,1/1.6)};
+ $('tFit').onclick=function(){fitTo([EXT.x0,EXT.y0,EXT.x1,EXT.y1],.08)};
+ $('tBox').onclick=function(){setBox(!boxMode)};
+ $('tClr').onclick=function(){clearSel();setBox(false)};
+ $('idClose').onclick=function(){$('identify').hidden=true};
+ $('selClose').onclick=clearSel;
+ $('panelBtn').onclick=function(){document.body.classList.toggle('nopanel')};
+
+/* ---------- ویزارد ورود داده ---------- */
+var wizStep=1,wizSelQ=null,wizFile=null,uid=1;
+function wizGo(n){wizStep=n;
+ [1,2,3,4].forEach(function(s){$('ws'+s).hidden=(s!==n)});
+ var stps=document.querySelectorAll('#wizBack .stp');
+ stps.forEach(function(el,i){el.className='stp'+((i+1)<n?' done':((i+1)===n?' on':''))});
+ $('wPrev').disabled=(n===1);
+ $('wNext').textContent=(n===1)?'بازرسی فایل':(n===2)?'ثبت متادیتا':(n===3)?'پردازش و انتشار':'پایان';
+}
+function wizOpenF(pre){wizSelQ=pre||null;wizFile=null;$('mfTitle').value='';$('mfErr').style.display='none';renderQ();$('wizBack').classList.add('show');wizGo(1)}
+function wizCloseF(){$('wizBack').classList.remove('show')}
+ $('wizClose').onclick=wizCloseF;$('wCancel').onclick=wizCloseF;
+ $('addLayerBtn').onclick=function(){wizOpenF()};
+ $('repoIngest').onclick=function(){wizOpenF()};
+ $('ingestBtn').onclick=function(){wizOpenF()};
+function renderQ(){var q=$('qlist');q.innerHTML='';
+ var pend=queue.filter(function(it){return it.status==='queue'});
+ pend.forEach(function(it){
+  var el=document.createElement('div');el.className='qitem'+(wizSelQ===it.id?' sel':'');
+  el.innerHTML='<span class="dic">'+ic('file',17)+'</span><div style="min-width:0"><div class="qn">'+it.label+'</div>'+
+   '<div class="mono dim" style="font-size:10px;margin-top:3px;text-align:right">'+it.file+' · '+it.size+'</div></div>';
+  el.onclick=function(){wizSelQ=it.id;wizFile=null;renderQ()};
+  q.appendChild(el);
+ });
+ if(!pend.length)q.innerHTML='<div class="hint">موردی در صف ورود نیست — همهٔ دیتاست‌های صف منتشر شده‌اند. می‌توانید فایل GeoJSON خودتان را بارگذاری کنید.</div>';
+}
+function scanrow(k,v){return '<div class="scanrow"><span class="k">'+k+'</span><span class="v">'+v+'</span></div>'}
+function scanQ(){var it=null;queue.forEach(function(q){if(q.id===wizSelQ)it=q});if(!it)return;
+ var f=it.gen()[0],fields=Object.keys(f.props).slice(0,6);
+ $('scanOut').innerHTML=scanrow('فایل',it.file)+scanrow('نوع هندسه',KD[it.kind][0])+
+  scanrow('تعداد عارضه',it.count.toLocaleString('en-US'))+scanrow('حجم',it.size)+
+  scanrow('CRS','EPSG:4326 → 32641 (تبدیل خودکار)')+
+  '<div class="dchips">'+fields.map(function(x){return '<i>'+x+'</i>'}).join('')+'</div>'}
+function scanU(){var fs=wizFile.feats,kc={point:0,line:0,poly:0},fields=[];
+ fs.forEach(function(f){kc[f.g]++;Object.keys(f.props).forEach(function(k){if(fields.indexOf(k)<0&&fields.length<9)fields.push(k)})});
+ var kinds=Object.keys(kc).filter(function(k){return kc[k]}).map(function(k){return KD[k][0]+' ×'+kc[k]}).join(' + ');
+ $('scanOut').innerHTML=scanrow('فایل',wizFile.name)+scanrow('نوع هندسه',kinds)+
+  scanrow('تعداد عارضه',fs.length.toLocaleString('en-US'))+scanrow('حجم',fmtSize(wizFile.size))+
+  scanrow('CRS','EPSG:4326 → 32641 (فرض)')+
+  '<div class="dchips">'+fields.map(function(x){return '<i>'+x+'</i>'}).join('')+'</div>'}
+function geojsonToFeats(gj){var out=[];
+ function ring(rr){return rr.map(function(p){var xy=ll2xy(p[0],p[1]);return [xy[0],xy[1]]})}
+ (gj.features||[]).forEach(function(f){var g=f.geometry;if(!g)return;var pr=f.properties||{};
+  if(g.type==='Point')out.push({g:'point',c:ring([g.coordinates])[0],props:pr});
+  else if(g.type==='MultiPoint')g.coordinates.forEach(function(p){out.push({g:'point',c:ring([p])[0],props:pr})});
+  else if(g.type==='LineString')out.push({g:'line',c:ring(g.coordinates),props:pr});
+  else if(g.type==='MultiLineString')g.coordinates.forEach(function(ls){out.push({g:'line',c:ring(ls),props:pr})});
+  else if(g.type==='Polygon')out.push({g:'poly',c:ring(g.coordinates[0]),props:pr});
+  else if(g.type==='MultiPolygon')g.coordinates.forEach(function(pg){out.push({g:'poly',c:ring(pg[0]),props:pr})});
+ });return out}
+var dropEl=$('drop'),fileIn=$('fileIn');
+dropEl.addEventListener('click',function(){fileIn.click()});
+fileIn.addEventListener('change',function(){if(this.files&&this.files[0])readUp(this.files[0])});
+['dragover','dragenter'].forEach(function(ev){dropEl.addEventListener(ev,function(e){e.preventDefault();dropEl.classList.add('over')})});
+['dragleave','drop'].forEach(function(ev){dropEl.addEventListener(ev,function(e){e.preventDefault();dropEl.classList.remove('over')})});
+dropEl.addEventListener('drop',function(e){if(e.dataTransfer.files&&e.dataTransfer.files[0])readUp(e.dataTransfer.files[0])});
+function readUp(file){var fr=new FileReader();
+ fr.onload=function(){try{var gj=JSON.parse(fr.result);
+   if(gj.type==='Feature')gj={features:[gj]};
+   if(gj.type!=='FeatureCollection'||!gj.features||!gj.features.length)throw new Error('bad');
+   var feats=geojsonToFeats(gj);if(!feats.length)throw new Error('empty');
+   wizFile={name:file.name,size:file.size,feats:feats};wizSelQ=null;renderQ();scanU();wizGo(2);
+  }catch(err){dropEl.classList.add('err');setTimeout(function(){dropEl.classList.remove('err')},1600);
+   toast('فایل خوانده نشد — یک GeoJSON معتبر انتخاب کنید')}};
+ fr.readAsText(file)}
+function styleForKind(k){return k==='point'?{color:'#E8A33D',shape:'circle',r:4.5}:(k==='line'?{color:'#E0654A',w:1.7,dash:[7,5]}:{color:'#8CAF6B',fillA:.4,w:1.3})}
+function domKind(fs){var c={point:0,line:0,poly:0};fs.forEach(function(f){c[f.g]=(c[f.g]||0)+1});
+ var m='poly',v=-1;Object.keys(c).forEach(function(k){if(c[k]>v){v=c[k];m=k}});return m==='poly'?'polygon':m}
+ $('wNext').onclick=function(){
+ if(wizStep===1){
+  if(wizFile){scanU();wizGo(2)}
+  else if(wizSelQ){scanQ();wizGo(2)}
+  else toast('ابتدا یک دیتاست از صف انتخاب کنید یا فایل GeoJSON بارگذاری کنید');
+ }else if(wizStep===2){
+  if(wizSelQ){queue.forEach(function(q){if(q.id===wizSelQ&&!$('mfTitle').value.trim())$('mfTitle').value=q.label})}
+  wizGo(3);
+ }else if(wizStep===3){
+  if(!$('mfTitle').value.trim()){$('mfErr').style.display='block';return}
+  $('mfErr').style.display='none';startProc();
+ }else wizCloseF();
+};
+ $('wPrev').onclick=function(){if(wizStep>1)wizGo(wizStep-1)};
+function startProc(){
+ var label=$('mfTitle').value.trim();
+ var meta={src:$('mfOwner').value,date:$('mfDate').value||'1404/06/10',fmt:'',size:'',epsg:'EPSG:32641',q:null};
+ var feats,kind;
+ if(wizFile){feats=wizFile.feats;kind=domKind(feats);meta.fmt='GeoJSON (آپلود کاربر)';meta.size=fmtSize(wizFile.size)}
+ else{var it=null;queue.forEach(function(q){if(q.id===wizSelQ)it=q});feats=it.gen();kind=it.kind;meta.fmt='GeoJSON (مسیر اشتراکی)';meta.size=it.size;meta.q=it}
+ runProc(label,feats,kind,meta,styleForKind(kind));
+}
+function runProc(label,feats,kind,meta,style){
+ wizGo(4);
+ var log=$('plog');log.innerHTML='';$('pbar').style.width='0';
+ var stps=$('psteps').children;
+ for(var i=0;i<stps.length;i++)stps[i].className='';
+ var lines=[
+  ['در حال خواندن فایل «'+label+'»…','✓ فایل خوانده شد — '+meta.size],
+  ['شناسایی و اعتبارسنجی CRS…','✓ CRS تأیید شد — '+meta.epsg],
+  ['ساخت ایندکس مکانی برای '+feats.length.toLocaleString('en-US')+' عارضه…','✓ ایندکس مکانی ساخته شد'],
+  ['ذخیره‌سازی در مخزن داده…','✓ دیتاست در مخزن داده ثبت شد'],
+  ['ساخت و انتشار لایه روی نقشه…','✓ لایه «'+label+'» منتشر شد']];
+ var i2=0;
+ (function next(){
+  if(i2<lines.length){
+   stps[i2].className='on';
+   var d1=document.createElement('div');d1.textContent=lines[i2][0];log.appendChild(d1);
+   setTimeout(function(){stps[i2].className='done';
+    var d2=document.createElement('div');d2.textContent=lines[i2][1];log.appendChild(d2);
+    $('pbar').style.width=Math.round((i2+1)/lines.length*100)+'%';
+    i2++;setTimeout(next,240)},430);
+  }else finalize(label,feats,kind,meta,style);
+ })();
+}
+function finalize(label,feats,kind,meta,style){
+ var l=mkLayer('u_'+(uid++),label,kind,feats,style,meta);l.opacity=.9;
+ layers.unshift(l);
+ if(meta.q){meta.q.status='published';meta.q.layerId=l.id;meta.q.feats=feats;meta.q.count=feats.length}
+ else datasets.unshift({id:'ds_'+l.id,label:label,kind:kind,count:feats.length,size:meta.size,date:meta.date,published:true,layerId:l.id,feats:feats});
+ renderLayers();renderRepo();renderQ();
+ fitTo(bboxOf(l),.25);
+ toast('دیتاست «'+label+'» با موفقیت منتشر و روی نقشه نمایش داده شد');
+}
+
+/* ---------- معیارهای پذیرش و راهنما ---------- */
+var ACC=[
+ ['ورود دیتاست از مسیر اشتراکی و فایل محلی','ویزارد چهار مرحله‌ای با دو منبع ورود پیاده‌سازی شده است.'],
+ ['ثبت متادیتای الزامی','عنوان، متولی، تاریخ و توضیحات همراه لایه در مخزن ثبت می‌شود.'],
+ ['بازرسی خودکار ساختار، هندسه و CRS','پیش از پردازش، گزارش شناسایی به کاربر نمایش داده می‌شود.'],
+ ['ذخیره‌سازی متمرکز و ساخت لایه','هر دیتاست تأییدشده به لایهٔ قابل نمایش تبدیل می‌شود.'],
+ ['مدیریت لایه‌ها: نمایش، شفافیت و ترتیب','پنل لایه‌ها با کشیدن دستگیره، ترتیب نمایش را تغییر می‌دهد.'],
+ ['پشتیبانی از هر پنج نوع دادهٔ MVP','Point، Line، Polygon، Raster باینری و Raster RGB بارگذاری و نمایش داده شده‌اند.'],
+ ['WebGIS با مقیاس، مختصات و شبکه جغرافیایی','نوار وضعیت به‌صورت لحظه‌ای E/N، درجهٔ جغرافیایی و مقیاس را نشان می‌دهد.'],
+ ['تعامل مکانی: Identify و انتخاب محدوده','کلیک روی عارضه مشخصات را باز می‌کند و انتخاب کادر نتایج را می‌شمارد.']
+];
+(function(){var h='';ACC.forEach(function(a){h+='<div class="accitem"><span class="ck">'+ic('chk',15)+'</span><p><b>'+a[0]+'</b><br><span class="dim">'+a[1]+'</span></p></div>'});$('accBody').innerHTML=h})();
+ $('acceptBtn').onclick=function(){$('mAcc').classList.add('show')};
+ $('accClose').onclick=function(){$('mAcc').classList.remove('show')};
+(function(){var s=[['ورود دیتاست','از مسیر اشتراکی یا فایل GeoJSON محلی'],['بازرسی و شناسایی','ساختار، هندسه و CRS به‌صورت خودکار'],['ثبت متادیتا','عنوان، متولی، تاریخ و توضیحات'],['پردازش و انتشار','ایندکس مکانی، ذخیره‌سازی و ساخت لایه'],['نمایش و تعامل','WebGIS با Identify، انتخاب محدوده و مدیریت لایه‌ها']];
+ var h='<div class="dchain">';s.forEach(function(x,i){h+='<div class="chit"><span class="n">'+(i+1)+'</span><span class="t"><b>'+x[0]+'</b> — '+x[1]+'</span></div>'});h+='</div>';
+ h+='<p><b>شروع:</b> دکمهٔ «ورود دیتاست» را بزنید و یکی از موارد صف را انتخاب کنید یا فایل GeoJSON خود را در کادر رها کنید.</p>';
+ h+='<p><b>لایه‌ها:</b> با کلیک روی ردیف هر لایه، شفافیت، راهنما و متادیتا باز می‌شود؛ با کشیدن دستگیرهٔ کنار ردیف، ترتیب نمایش تغییر می‌کند و با آیکن چشم، لایه نمایش/پنهان می‌شود.</p>';
+ h+='<p><b>تعامل:</b> کلیک ساده روی هر عارضه پنجرهٔ Identify را باز می‌کند. با ابزار «انتخاب محدوده» کادری روی نقشه بکشید تا عوارض داخل آن شمارش و برجسته شوند.</p>';
+ h+='<p class="dim">داده‌های این نمونه نمایشی و کاملاً محلی است و هیچ داده‌ای به بیرون از مرورگر ارسال نمی‌شود.</p>';
+ $('helpBody').innerHTML=h})();
+ $('helpBtn').onclick=function(){$('mHelp').classList.add('show')};
+ $('helpClose').onclick=function(){$('mHelp').classList.remove('show')};
+document.querySelectorAll('#demoApp .mback').forEach(function(m){m.addEventListener('click',function(e){if(e.target===m)m.classList.remove('show')})});
+
+/* ---------- باز/بستن دمو و کلیدها ---------- */
+var demoInited=false;
+window.__demoOpen=function(){
+ document.body.classList.add('demoMode');
+ setTimeout(function(){resize();if(!demoInited){demoInited=true;fitTo([EXT.x0,EXT.y0,EXT.x1,EXT.y1],.08)}need()},60);
+};
+window.__demoClose=function(){document.body.classList.remove('demoMode');setBox(false)};
+ $('demoExit').onclick=function(){window.__demoClose()};
+document.addEventListener('keydown',function(e){
+ if(!document.body.classList.contains('demoMode'))return;
+ if(e.key==='Escape'){var m=document.querySelector('#demoApp .mback.show');
+  if(m)m.classList.remove('show');else window.__demoClose()}
+});
+window.addEventListener('resize',function(){if(document.body.classList.contains('demoMode'))resize()});
+
+/* ---------- راه‌اندازی ---------- */
+renderLayers();renderRepo();renderQ();
+})();
 </script>
 </body>
 </html>
